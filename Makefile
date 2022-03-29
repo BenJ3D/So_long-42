@@ -6,43 +6,33 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/03/15 18:05:03 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/03/29 20:47:51 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME =  so_long
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
-HEADER = ./includes/minitalk.h
+HEADER = ./includes/so_long.h
 HEADER_BONUS = ./bonus/includes/minitalk_bonus.h
 LIBFTPATH = -C ./libft
 LIBFT = ./libft/libft.a
 FS = #-fsanitize=address -g3
 
-all : ${LIBFT} server client 
-	@chmod 700 server client
-
-
-server : server.c utils.c $(HEADER)
-	gcc $(CFLAGS) $(FS) utils.c server.c -Llibft -lft -o server
-
-client : client.c utils.c $(HEADER)
-	gcc $(CFLAGS) $(FS) utils.c client.c -Llibft -lft -o client
-
-server_bonus : ./bonus/server_bonus.c utils.c $(HEADER_BONUS)
-	gcc $(CFLAGS) $(FS) ./bonus/utils_bonus.c ./bonus/server_bonus.c -Llibft -lft -o ./bonus/server
-
-client_bonus : ./bonus/client_bonus.c utils.c $(HEADER_BONUS)
-	gcc $(CFLAGS) $(FS) ./bonus/utils_bonus.c ./bonus/client_bonus.c -Llibft -lft -o ./bonus/client
+all : $(NAME) 
 
 ${LIBFT}: 
 	make -C ./libft
 	make bonus -C ./libft
 
-bonus: ${LIBFT} $(HEADER_BONUS) server_bonus client_bonus 
-	@chmod 700 ./bonus/server ./bonus/client
+%.o: %.c
+	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
+$(NAME): $(OBJ) ${LIBFT}
+	$(CC) $(OBJ) -framework OpenGL -framework AppKit -lz -o $(NAME)
+	
 clean:
 	${MAKE} clean $(LIBFTPATH)
 	$(RM)
