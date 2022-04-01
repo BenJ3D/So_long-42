@@ -6,45 +6,49 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/01 16:29:32 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/01 20:01:09 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =  so_long
+NAME = so_long
+LIBSL = so_long.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 HEADER = ./includes/so_long.h
-HEADER_BONUS = ./bonus/includes/minitalk_bonus.h
+HEADER = ./includes/so_long.h
+HEADER_MLX = ./mlx/mlx.h
 LIBFTPATH = -C ./libft
 LIBFT = ./libft/libft.a
-MLX = 
 FS = #-fsanitize=address -g3
 
-all : $(NAME) 
+all : ${LIBFT} $(NAME)
+
+
+$(NAME): ./srcs/main.c libmlx $(HEADER)
+	${CC} ${FS} ${CFLAGS} srcs/main.c libmlx.dylib -framework OpenGL -framework AppKit -lz \
+	-Llibft -lft -o $(NAME)
+
+libmlx: $(HEADER_MLX)
+	make -C ./mlx
+	cp ./mlx/libmlx.dylib libmlx.dylib
 
 ${LIBFT}: 
 	make -C ./libft
 	make bonus -C ./libft
 
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
-
-$(NAME): $(OBJ) ${LIBFT}
-	$(CC) $(OBJ) -framework OpenGL -framework AppKit -lz -o $(NAME)
-	
 clean:
 	${MAKE} clean $(LIBFTPATH)
-	$(RM)
+	${MAKE} clean -C ./mlx
 
 fclean: clean
-	${MAKE} fclean $(LIBFTPATH)
-	$(RM) $(NAME) server client ./bonus/server ./bonus/client
-	rm -d -rf server.d* client.d* .vscode
+	make fclean $(LIBFTPATH)
+	$(RM) $(NAME) libmlx.dylib
+	rm -d -rf .vscode
 
 re: fclean all
-
+#srcs/main.c libmlx.dylib -framework OpenGL -framework AppKit -lz -o $(NAME)
 git:
 	git add .
 	git commit -m "$m"
