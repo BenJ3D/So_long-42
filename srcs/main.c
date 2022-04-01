@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 19:03:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/01 22:27:35 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/01 22:30:44 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(void)
 		}
 	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_key_hook()
+	mlx_key_hook(); // TODO:
 	mlx_loop(mlx);
 	return (0);
 }
