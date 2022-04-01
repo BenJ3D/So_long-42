@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/03/29 20:47:51 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/01 16:29:32 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ HEADER = ./includes/so_long.h
 HEADER_BONUS = ./bonus/includes/minitalk_bonus.h
 LIBFTPATH = -C ./libft
 LIBFT = ./libft/libft.a
+MLX = 
 FS = #-fsanitize=address -g3
 
 all : $(NAME) 
