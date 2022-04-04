@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
+#    By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/01 20:01:09 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/04 15:49:10 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,17 @@ $(NAME): ./srcs/main.c libmlx $(HEADER)
 	${CC} ${FS} ${CFLAGS} srcs/main.c libmlx.dylib -framework OpenGL -framework AppKit -lz \
 	-Llibft -lft -o $(NAME)
 
+ifeq ($(UNAME), Linux)
+libmlx: $(HEADER_MLX)
+	make -C ./mlx
+	cp ./mlx/libmlx.dylib libmlx.dylib
+endif
+
+ifeq ($(UNAME), Linux)
+libmlx: $(HEADER_MLX)
+	make -C ./mlx
+	cp ./mlx/libmlx.dylib libmlx.dylib
+endif
 libmlx: $(HEADER_MLX)
 	make -C ./mlx
 	cp ./mlx/libmlx.dylib libmlx.dylib
