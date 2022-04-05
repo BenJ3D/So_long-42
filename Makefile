@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/04 15:49:10 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/05 23:40:42 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ HEADER = ./includes/so_long.h
 HEADER_MLX = ./mlx/mlx.h
 LIBFTPATH = -C ./libft
 LIBFT = ./libft/libft.a
-FS = #-fsanitize=address -g3
+FS = -fsanitize=address -g3
 
 all : ${LIBFT} $(NAME)
 
