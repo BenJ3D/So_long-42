@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/05 18:51:19 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:25:02 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct	s_data {
 	void	*mlx;
 	void	*win;
 	void	*img;
+	void	*grass;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;

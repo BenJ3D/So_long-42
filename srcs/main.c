@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 19:03:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/05 19:06:50 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:44:49 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,53 +29,53 @@ int	ft_forward(t_data *img)
 	return(0);
 }
 
-int	key_hook(int keycode, t_data *img)
+int	key_hook(int keycode, t_data *game)
 {
 	if (keycode == touch_w || keycode == touch_up)
 	{
-		trace_background(img, 0x000000FF);
-		img->plyr.posy -= img->plyr.size;
-		trace_square(img);
-		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+		// trace_background(img, 0x000000FF);
+		game->plyr.posy -= game->plyr.size;
+		trace_square(game);
+		mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	}
 	if (keycode == touch_d || keycode == touch_right)
 	{
-		trace_background(img, 0x000000FF);
-		img->plyr.posx += img->plyr.size;
-		trace_square(img);
-		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+		// trace_background(img, 0x000000FF);
+		game->plyr.posx += game->plyr.size;
+		trace_square(game);
+		mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	}
 	if (keycode == touch_s || keycode == touch_down)
 	{
-		trace_background(img, 0x000000FF);
-		img->plyr.posy += img->plyr.size;
-		trace_square(img);
-		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+		// trace_background(img, 0x000000FF);
+		game->plyr.posy += game->plyr.size;
+		trace_square(game);
+		mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	}
 	if (keycode == touch_a || keycode == touch_left)
 	{
-		trace_background(img, 0x000000FF);
-		img->plyr.posx -= img->plyr.size;
-		trace_square(img);
-		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+		// trace_background(img, 0x000000FF);
+		game->plyr.posx -= game->plyr.size;
+		trace_square(game);
+		mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	}
 	if (keycode == 69)
 	{
-		trace_background(img, 0x000000FF);
-		img->plyr.size += 8;
-		img->plyr.posx -= img->plyr.size / 8;
-		img->plyr.posy -= img->plyr.size / 8;
-		trace_square(img);
-		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+		// trace_background(img, 0x000000FF);
+		game->plyr.size += 8;
+		game->plyr.posx -= game->plyr.size / 8;
+		game->plyr.posy -= game->plyr.size / 8;
+		trace_square(game);
+		mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	}
 		if (keycode == 78)
 	{
-		trace_background(img, 0x000000FF);
-		img->plyr.size -= 8;
-		img->plyr.posx += img->plyr.size / 8;
-		img->plyr.posy += img->plyr.size / 8;
-		trace_square(img);
-		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+		// trace_background(img, 0x000000FF);
+		game->plyr.size -= 8;
+		game->plyr.posx += game->plyr.size / 8;
+		game->plyr.posy += game->plyr.size / 8;
+		trace_square(game);
+		mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	}
 	else
 		printf("Hello from key_hook! : %d\n", keycode);
@@ -114,10 +114,9 @@ int trace_background2(t_data *game)
 	int y = 10;
 	int c1 = 255;
 
-	void *grass;
 	//unsigned int color = 0x000000FF;
-	grass = mlx_png_file_to_image(game->mlx, "./map/grass.png", &game->img_width, &game->img_height);
-	mlx_put_image_to_window(game->mlx, game->win, grass, 40, 40);
+	game->img = mlx_png_file_to_image(game->mlx, "./map/grass.png", &game->img_width, &game->img_height);
+	mlx_put_image_to_window(game->mlx, game->win, game->img, 64, 64);
 	return (0);
 }
 
@@ -125,9 +124,6 @@ int trace_square(t_data *game)
 {
 	int x = 0;
 	int y = 0;
-	//game->plyr.size = 30;
-	// game->plyr.posx = 300;
-	// game->plyr.posy = 300;
 	while(y <= game->plyr.size)
 	{
 		my_mlx_pixel_put(game, game->plyr.posx + x++, game->plyr.posy + y, 0x00FF0000);
