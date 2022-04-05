@@ -6,14 +6,13 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 19:03:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/03 17:36:16 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:06:50 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #define LPX 600
 #define PPX 600
-
 
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -24,13 +23,57 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+int	ft_forward(t_data *img)
+{
+	img->plyr.posy += 50;
+	return(0);
+}
+
 int	key_hook(int keycode, t_data *img)
 {
 	if (keycode == touch_w || keycode == touch_up)
 	{
-		printf("foreward is pressed\n");
-		forward(img);
-		trace_background(img);
+		trace_background(img, 0x000000FF);
+		img->plyr.posy -= img->plyr.size;
+		trace_square(img);
+		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+	}
+	if (keycode == touch_d || keycode == touch_right)
+	{
+		trace_background(img, 0x000000FF);
+		img->plyr.posx += img->plyr.size;
+		trace_square(img);
+		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+	}
+	if (keycode == touch_s || keycode == touch_down)
+	{
+		trace_background(img, 0x000000FF);
+		img->plyr.posy += img->plyr.size;
+		trace_square(img);
+		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+	}
+	if (keycode == touch_a || keycode == touch_left)
+	{
+		trace_background(img, 0x000000FF);
+		img->plyr.posx -= img->plyr.size;
+		trace_square(img);
+		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+	}
+	if (keycode == 69)
+	{
+		trace_background(img, 0x000000FF);
+		img->plyr.size += 8;
+		img->plyr.posx -= img->plyr.size / 8;
+		img->plyr.posy -= img->plyr.size / 8;
+		trace_square(img);
+		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+	}
+		if (keycode == 78)
+	{
+		trace_background(img, 0x000000FF);
+		img->plyr.size -= 8;
+		img->plyr.posx += img->plyr.size / 8;
+		img->plyr.posy += img->plyr.size / 8;
 		trace_square(img);
 		mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
 	}
@@ -42,85 +85,81 @@ int	key_hook(int keycode, t_data *img)
 int	mouse_hook(int keycode, t_data *img)
 {
 
-//	printf("Hello mouse\n");
 	return(0);
 }
 
-void trace_background(t_data *img)
+int trace_background(t_data *img, int color)
 {
 	int x = 10;
 	int y = 10;
 	int c1 = 255;
-	
+	//unsigned int color = 0x000000FF;
 	while (1)
+	{
+		my_mlx_pixel_put(img, x++, y, color);
+		if (y == PPX - 10 && x == LPX - 10)
+			break;
+		if (x == LPX - 10)
 		{
-			my_mlx_pixel_put(img, x++, y, 0x00FF0000);
-			if (y == PPX - 10 && x == LPX - 10)
-				break;
-			if (x == LPX - 10)
-			{
-				x = 10;
-				y++;
-			}
+			x = 10;
+			y++;
 		}
+	}
+	return (0);
 }
 
-void trace_square(t_data *img)
+int trace_background2(t_data *game)
+{
+	int x = 10;
+	int y = 10;
+	int c1 = 255;
+
+	void *grass;
+	//unsigned int color = 0x000000FF;
+	grass = mlx_png_file_to_image(game->mlx, "./map/grass.png", &game->img_width, &game->img_height);
+	mlx_put_image_to_window(game->mlx, game->win, grass, 40, 40);
+	return (0);
+}
+
+int trace_square(t_data *game)
 {
 	int x = 0;
 	int y = 0;
-	img->plyr.size = 30;
-	img, img->plyr.posx = 300;
-	img, img->plyr.posy = 300;
-	while(y <= img->plyr.size)
+	//game->plyr.size = 30;
+	// game->plyr.posx = 300;
+	// game->plyr.posy = 300;
+	while(y <= game->plyr.size)
 	{
-		my_mlx_pixel_put(img, img->plyr.posx + x++, img->plyr.posx + y, 0x00000000);
-		if (x == img->plyr.size)
+		my_mlx_pixel_put(game, game->plyr.posx + x++, game->plyr.posy + y, 0x00FF0000);
+		if (x == game->plyr.size)
 		{
 			x = 0;
 			y++;
 		}
 	}
-	
+	return (0);
 }
 
-int	forward(t_data *img)
-{
-	img->plyr.posy += img->plyr.size;
-	return(0);
-}
+
 
 int	main(void)
 {
-	t_data	img;
-	//t_vars	vars;
-	// int x = 10;
-	// int y = 10;
-	// int c1 = 255;
-	
-	
-	img.mlx = mlx_init();
-	img.win = mlx_new_window(img.mlx, LPX, PPX, "Hello world!");
-	img.img = mlx_new_image(img.mlx, LPX, PPX);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
-	// while (1)
-	// {
-	// 	my_mlx_pixel_put(&img, x++, y, 0x00FF0000);
-	// 	if (y == PPX - 10 && x == LPX - 10)
-	// 		break;
-	// 	if (x == LPX - 10)
-	// 	{
-	// 		x = 10;
-	// 		y++;
-	// 	}
-	// }
-	 
-	trace_background(&img);
-	trace_square(&img);
-	mlx_put_image_to_window(img.mlx, img.win, img.img, 0, 0);
-	mlx_key_hook(img.win, key_hook, &img); //TODO: resttruct img
-	mlx_mouse_hook(img.win, mouse_hook, &img);
-	mlx_loop(img.mlx);
+	t_data	game;
+		
+	game.plyr.size = 32;
+	game.mlx = mlx_init();
+	game.win = mlx_new_window(game.mlx, LPX, PPX, "so_long");
+	game.img = mlx_new_image(game.mlx, LPX, PPX);
+	game.addr = mlx_get_data_addr(game.img, &game.bits_per_pixel, &game.line_length,
+								&game.endian);
+	//trace_background(&game, 0x000000FF);
+	trace_background2(&game);
+	game.plyr.posx = LPX / 2;
+	game.plyr.posy = PPX / 2;
+	trace_square(&game);
+	mlx_put_image_to_window(game.mlx, game.win, game.img, 0, 0);
+	mlx_key_hook(game.win, key_hook, &game);
+	mlx_mouse_hook(game.win, mouse_hook, &game);
+	mlx_loop(game.mlx);
 	return (0);
 }

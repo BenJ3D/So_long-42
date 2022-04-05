@@ -10,6 +10,19 @@
 		"string_view": "c",
 		"unordered_map": "c",
 		"utility": "c",
-		"vector": "c"
+		"vector": "c",
+		"__functional_base": "c",
+		"exception": "c",
+		"__memory": "c",
+		"functional": "c",
+		"iterator": "c",
+		"memory_resource": "c",
+		"iosfwd": "c",
+		"istream": "c",
+		"memory": "c",
+		"mutex": "c",
+		"optional": "c",
+		"tuple": "c",
+		"type_traits": "c"
 	}
 }

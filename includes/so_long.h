@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/03 17:14:31 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/05 18:51:19 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include <math.h>
-
 typedef struct	s_player
 {
 	int posx;
@@ -24,6 +23,12 @@ typedef struct	s_player
 	int	size;
 }				t_player;
 
+typedef struct	s_map
+{
+	int posx;
+	int	posy;
+	int	size;
+}				t_map;
 typedef struct	s_data {
 	void	*mlx;
 	void	*win;
@@ -33,9 +38,10 @@ typedef struct	s_data {
 	int		line_length;
 	int		endian;
 	t_player	plyr;
+	t_map		map;
+	int		img_width;
+	int		img_height;
 }				t_data;
-
-
 
 enum	e_key
 {
@@ -49,5 +55,11 @@ enum	e_key
 	touch_right=124,
 	touch_esc=53
 };
+
+int		trace_background(t_data *img, int color);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int	key_hook(int keycode, t_data *img);
+int	mouse_hook(int keycode, t_data *img);
+int trace_square(t_data *img);
 
 #endif
