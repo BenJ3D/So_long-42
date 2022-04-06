@@ -6,10 +6,11 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/06 16:57:45 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:30:21 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//TODO: ressoudre gestion filename error
 #include "./includes/so_long.h"
 #define LPX 512	
 #define HPX 512
@@ -17,15 +18,17 @@
 void	write_error_type(t_data *game)
 {
 	if (game->error == ERROR_ARG_NBR)
-		ft_putstr("Please enter one path argument");
+		ft_putstr("Please enter one path argument\n");
+	else if (game->error == ERROR_FILE_TYPE)
+		ft_putstr("file is not .ber extension\n");
 }
 
-//TODO: gerer les espaces en fin de path
+//FIXME: check if ==>> gerer les espaces en fin de path
 /**
  * @brief return 0 if path extension is == typefile
  * 
  * @param str 
- * @param filetype 
+ * @param filetype enter ".type"
  * @return int 
  */
 int	check_type_file(char *str, char *filetype)
@@ -47,16 +50,27 @@ int	check_type_file(char *str, char *filetype)
 	return (0);
 }
 
-int	check_arg(int ac, char *str, t_data *game)
+int	check_norm_arg_is_ok(int ac, char *str, t_data *game)
 {
 	int	len;
 	
 	if (ac != 2 || str[0] == '\0')
 	{
+		ft_putstr("arg error\n");
 		game->error = ERROR_ARG_NBR;
-		return (1);
+		//return (1);
 	}
-	len = ft_strlen(str);
+	else if (check_type_file(str, ".ber"))
+	{
+		ft_putstr("file error\n");
+		game->error = ERROR_FILE_TYPE;
+		//return (1);
+	}
+	else if (game->error != NO_ERROR)
+	{
+		return (1);		
+	}
+		ft_putstr("no error\n");
 	return(0);
 }
 
@@ -64,8 +78,10 @@ int	main(int ac, char **av)
 {
 	t_data	game;
 	
-	if (!(check_arg(ac, av[1], &game) == 0))
+	printf("check result norm arg function : %d", check_norm_arg_is_ok(ac, av[1], &game));
+	if (check_norm_arg_is_ok(ac, av[1], &game) == 1)
 	{
+		ft_putstr("norm arg not ok\n");
 		write_error_type(&game);
 		return (0);
 	}
