@@ -6,9 +6,11 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/06 13:05:07 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/06 13:33:44 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+//FIXME: Attention relink sur le cp de la dylib
 
 NAME = so_long
 LIBSL = so_long.a
@@ -45,7 +47,7 @@ clean:
 fclean: clean
 	make fclean $(LIBFTPATH)
 	$(RM) $(NAME) libmlx.dylib
-	rm -d -rf .vscode
+	rm -d -rf .vscode so_long*
 
 re: fclean all
 #srcs/main.c libmlx.dylib -framework OpenGL -framework AppKit -lz -o $(NAME)

@@ -6,13 +6,13 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/06 13:16:59 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/06 13:22:45 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/so_long.h"
-#define LPX 1024	
-#define HPX 1024
+#define LPX 512	
+#define HPX 512
 
 int	main(int ac, char **av)
 {
@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 	game.img_height = HPX;
 	game.mlx = mlx_init();
 	game.windows = mlx_new_window(game.mlx, game.img_width,
-			game.img_height, "So_long");
+			game.img_height, "so_long");
 	game.img = mlx_new_image(game.mlx, game.img_width, game.img_height);
 	game.addr = mlx_get_data_addr(game.img, &game.bits_per_pixel,
 			&game.line_length, &game.endian);
