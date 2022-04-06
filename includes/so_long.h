@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/06 17:22:02 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:49:18 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,20 @@ enum	e_key
 	touch_esc=53
 };
 
-/******-------------srcs ---------------******/
+/******-------------srcs --------------------******/
 /**
  * @brief ft test pour compile make file correctement
  * 
  */
 void	define_all_png_to_image(t_data *game);
 
-/******-----------parsing---------------******/
+/******-----------parsing--------------------******/
 int	parsing_map(t_data	*game);
+
+/******-----------manage error---------------******/
+void	write_error_type(t_data *game);
+int		check_type_file(char *str, char *filetype);
+int		check_norm_arg_is_ok(int ac, char *str, t_data *game);
 
 /******------------------ practice function -------*/
 int		trace_door(t_data *game);
