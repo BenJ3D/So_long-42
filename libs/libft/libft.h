@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:59:56 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/02/10 22:56:40 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/06 16:52:47 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+int		ft_isspace(char c);
 int		ft_atoi(const char *src);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
@@ -52,8 +53,10 @@ char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 int		ft_putstr_fd(char *s, int fd);
+int		ft_putstr(char *s);
 void	ft_putendl_fd(char *s, int fd);
 int		ft_putnbr_fd(int n, int fd);
+int		ft_putnbr(int n);
 int		ft_putchar_fd(char c, int fd);
 int		ft_intlen(long long nb);
 int		ft_putunnbr_fd(unsigned int n, int fd);

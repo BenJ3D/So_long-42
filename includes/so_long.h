@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/06 13:52:00 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/06 16:32:46 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,26 @@
 # include "../libs/gnl/get_next_line.h"
 # include <math.h>
 # include <stdio.h>
+#include <fcntl.h>
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17 //exit key code
 # define SIZE_PNG				64
 
+enum	e_error
+{
+	OK,
+	ERROR_ARG_NBR,
+	ERROR_FILE_TYPE,
+	ERROR_MAP
+};
 typedef struct s_png
 {
 	int		w;
 	int		h;
 	void	*img;
+	char	path[256];
 }				t_png;
 typedef struct s_player
 {
@@ -37,40 +46,26 @@ typedef struct s_player
 	int		size;
 	t_png	png;
 }				t_player;
-
-typedef struct s_map // FIXME: a virer ?
-{
-	int		posx;
-	int		posy;
-	int		size;
-}				t_map;
-
-typedef struct s_txture // FIXME: a virer ?
-{
-	t_png	grass;
-	t_png	wall;
-	t_png	collect;
-	t_png	player;
-	t_png	gate;
-}				t_txture;
-
 typedef struct s_data
 {
-	void		*mlx;
-	void		*windows;
-	int			size_winx;
-	int			size_winy;
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-	t_player	player;
-	t_png		item;
-	t_png		door;
-	t_png		ground;
-	int			img_width;
-	int			img_height;
+	void			*arg;
+	void			*mlx;
+	void			*windows;
+	int				size_winx;
+	int				size_winy;
+	void			*img;
+	int				img_width;
+	int				img_height;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+	t_player		player;
+	t_png			item;
+	t_png			door;
+	t_png			ground;
+	t_png			wall;
+	enum e_error	error;
 }				t_data;
 
 enum	e_key
@@ -91,7 +86,10 @@ enum	e_key
  * @brief ft test pour compile make file correctement
  * 
  */
-void	hello(void);
+void	define_all_png_to_image(t_data *game);
+
+/******-----------parsing---------------******/
+int	parsing_map(t_data	*game);
 
 /******------------------ practice function -------*/
 int		trace_door(t_data *game);

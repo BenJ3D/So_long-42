@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 09:53:02 by bducrocq          #+#    #+#              #
-#    Updated: 2022/02/07 19:44:44 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/06 16:52:37 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +49,15 @@ FILES = ft_memset \
 		ft_strmapi \
 		ft_striteri \
 		ft_putstr_fd \
+		ft_putstr \
 		ft_putendl_fd \
 		ft_putnbr_fd \
+		ft_putnbr \
 		ft_putchar_fd \
+		ft_putchar \
 		ft_intlen \
-		ft_putunnbr_fd
+		ft_putunnbr_fd \
+		ft_isspace
 
 FILES_B = 	ft_lstnew \
 	  		ft_lstadd_front \

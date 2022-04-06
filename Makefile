@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/06 14:14:00 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/06 16:03:07 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,14 @@ LIBFT = ./libs/libft/libft.a
 PATHMLX = ./libs/mlx
 FS = #-fsanitize=address -g3
 
-PATH_SRCS = srcs/
-FILES_SRCS =	ini_png
+PATH_SRCS = ./
+FILES_SRCS =	ini_png parsing
 
 SRCS_DIR = ./
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(PATH_SRCS)$(FILES_SRCS)))
+SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_SRCS)))
 
-OBJS_DIR = ./
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(PATH_SRCS)$(FILES_SRCS)))
+OBJS_DIR = ./srcs/
+OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_SRCS)))
 
 all : ${LIBFT} $(NAME)
 
