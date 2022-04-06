@@ -6,11 +6,11 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/06 17:30:21 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:45:46 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//TODO: ressoudre gestion filename error
+//TODO: ressoudre gestion filename error // au moins un char avant le .
 #include "./includes/so_long.h"
 #define LPX 512	
 #define HPX 512
@@ -18,12 +18,11 @@
 void	write_error_type(t_data *game)
 {
 	if (game->error == ERROR_ARG_NBR)
-		ft_putstr("Please enter one path argument\n");
+		ft_putstr("Error number of argument :\nPlease enter one path argument\n");
 	else if (game->error == ERROR_FILE_TYPE)
-		ft_putstr("file is not .ber extension\n");
+		ft_putstr("Error file type :\nFile is not .ber extension\n");
 }
 
-//FIXME: check if ==>> gerer les espaces en fin de path
 /**
  * @brief return 0 if path extension is == typefile
  * 
@@ -40,7 +39,7 @@ int	check_type_file(char *str, char *filetype)
 	y = ft_strlen(filetype) - 1;
 	while (ft_isspace(str[i]) != 0)
 		i--;
-	while (filetype >= 0)
+	while (y >= 0)
 	{
 		if (filetype[y] != str[i])
 			return (1);
@@ -56,21 +55,17 @@ int	check_norm_arg_is_ok(int ac, char *str, t_data *game)
 	
 	if (ac != 2 || str[0] == '\0')
 	{
-		ft_putstr("arg error\n");
 		game->error = ERROR_ARG_NBR;
 		//return (1);
 	}
 	else if (check_type_file(str, ".ber"))
 	{
-		ft_putstr("file error\n");
 		game->error = ERROR_FILE_TYPE;
-		//return (1);
 	}
 	else if (game->error != NO_ERROR)
 	{
 		return (1);		
 	}
-		ft_putstr("no error\n");
 	return(0);
 }
 
@@ -78,14 +73,12 @@ int	main(int ac, char **av)
 {
 	t_data	game;
 	
-	printf("check result norm arg function : %d", check_norm_arg_is_ok(ac, av[1], &game));
-	if (check_norm_arg_is_ok(ac, av[1], &game) == 1)
+	if (check_norm_arg_is_ok(ac, av[1], &game) == 0)
 	{
-		ft_putstr("norm arg not ok\n");
 		write_error_type(&game);
 		return (0);
 	}
-	parsing_map(&game);
+	//parsing_map(&game);
 	game.img_width = LPX;
 	game.img_height = HPX;
 	
