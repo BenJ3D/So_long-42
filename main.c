@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/06 13:22:45 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/06 13:51:14 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int ac, char **av)
 {
 	t_data	game;
 
+	hello();
 	game.img_width = LPX;
 	game.img_height = HPX;
 	game.mlx = mlx_init();

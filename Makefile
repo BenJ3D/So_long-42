@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/06 13:35:05 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/06 14:14:00 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,23 @@ LIBFT = ./libs/libft/libft.a
 PATHMLX = ./libs/mlx
 FS = #-fsanitize=address -g3
 
+PATH_SRCS = srcs/
+FILES_SRCS =	ini_png
+
+SRCS_DIR = ./
+SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(PATH_SRCS)$(FILES_SRCS)))
+
+OBJS_DIR = ./
+OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(PATH_SRCS)$(FILES_SRCS)))
+
 all : ${LIBFT} $(NAME)
 
-$(NAME): ./main.c libmlx $(HEADER)
+%.o: %.c $(SRCS) $(HEADER)
+	$(CC) $(CFLAGS) -c -o $@ $(OBJS_DIR)$< 
+
+$(NAME): ./main.c libmlx $(HEADER) $(OBJS)
 	${CC} ${FS} ${CFLAGS} main.c libmlx.dylib -framework OpenGL -framework AppKit -lz \
-	$(LIBFT) -o $(NAME)
+	$(LIBFT) $(OBJS) -o $(NAME)
 
 libmlx: $(HEADER_MLX)
 	make -C $(PATHMLX)
@@ -43,6 +55,7 @@ ${LIBFT}:
 clean:
 	${MAKE} clean $(LIBFTPATH)
 	${MAKE} clean -C $(PATHMLX)
+	rm -rf $(OBJS)
 
 fclean: clean
 	make fclean $(LIBFTPATH)

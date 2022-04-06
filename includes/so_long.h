@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/06 12:52:01 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/06 13:52:00 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 # include "../libs/libft/libft.h"
 # include "../libs/gnl/get_next_line.h"
 # include <math.h>
+# include <stdio.h>
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define X_EVENT_KEY_EXIT		17 //exit key code
 # define SIZE_PNG				64
-
 
 typedef struct s_png
 {
@@ -38,14 +38,14 @@ typedef struct s_player
 	t_png	png;
 }				t_player;
 
-typedef struct s_map	// a virer ?
+typedef struct s_map // FIXME: a virer ?
 {
 	int		posx;
 	int		posy;
 	int		size;
 }				t_map;
 
-typedef struct s_txture // a virer ?
+typedef struct s_txture // FIXME: a virer ?
 {
 	t_png	grass;
 	t_png	wall;
@@ -85,6 +85,13 @@ enum	e_key
 	touch_right=124,
 	touch_esc=53
 };
+
+/******-------------srcs ---------------******/
+/**
+ * @brief ft test pour compile make file correctement
+ * 
+ */
+void	hello(void);
 
 /******------------------ practice function -------*/
 int		trace_door(t_data *game);
