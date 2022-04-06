@@ -17,6 +17,14 @@ t_image ft_new_image(void* mlx, int width, int height)
 	*	the bits per pixel (each pixel is usually 4 chars of the array),
 	* 	the line size of the pixels array  (the amount of pixels in one line of the image)
 	* 	and the endian (info of how the colors are stored) */
+/*
+	Fonction mlx qui récupère un pointeur vers le premier pixel de l'image donnée.
+	* Les pixels ne sont pas stockés dans un tableau 2D, mais dans un simple tableau de char[] !
+	* la fonction enregistre également dans les pointeurs donnés :
+	* les bits par pixel (chaque pixel correspond généralement à 4 caractères du tableau),
+	* la taille de la ligne du tableau de pixels (le nombre de pixels dans une ligne de l'image)
+	* et l'endian (information sur la façon dont les couleurs sont stockées).
+*/
 	img.pixels = mlx_get_data_addr(img.reference, &img.bits_per_pixel, &img.line_size, &img.endian);
 
 	return (img);

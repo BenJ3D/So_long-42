@@ -6,12 +6,12 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 19:03:14 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/05 23:39:41 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/06 12:21:54 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
-#define LPX 1024
+#include "./so_long.h"
+#define LPX 1024	
 #define PPX 1024
 
 
@@ -119,6 +119,10 @@ int trace_background(t_data *game)
 	maxtile = SIZE_PNG * 16;
 	game->grass.img = mlx_png_file_to_image(game->mlx, "./map/grass.png", &game->grass.w, &game->grass.h);
 	//mlx_put_image_to_window(game->mlx, game->win, game->grass.img, x, y);
+
+	
+
+	
 	while (1)
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->grass.img, x, y);
@@ -205,7 +209,6 @@ int	main(void)
 	//mlx_hook(game.win, key_hook, &game);
 	mlx_hook(game.win, X_EVENT_KEY_PRESS, 0, key_hook, &game);
 	mlx_mouse_hook(game.win, mouse_hook, &game);
-	
 	mlx_loop(game.mlx);
 	return (0);
 }

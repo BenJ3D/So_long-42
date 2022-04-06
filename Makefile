@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/05 23:45:25 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/06 13:05:07 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,40 +18,29 @@ AR = ar rcs
 RM = rm -f
 HEADER = ./includes/so_long.h
 HEADER = ./includes/so_long.h
-HEADER_MLX = ./mlx/mlx.h
-LIBFTPATH = -C ./libft
-LIBFT = ./libft/libft.a
-FS = -fsanitize=address -g3
+HEADER_MLX = ./libs/mlx/mlx.h
+LIBFTPATH = -C ./libs/libft
+LIBFT = ./libs/libft/libft.a
+PATHMLX = ./libs/mlx
+FS = #-fsanitize=address -g3
 
 all : ${LIBFT} $(NAME)
 
+$(NAME): ./main.c libmlx $(HEADER)
+	${CC} ${FS} ${CFLAGS} main.c libmlx.dylib -framework OpenGL -framework AppKit -lz \
+	$(LIBFT) -o $(NAME)
 
-$(NAME): ./srcs/main.c libmlx $(HEADER)
-	${CC} ${FS} ${CFLAGS} srcs/main.c libmlx.dylib -framework OpenGL -framework AppKit -lz \
-	-Llibft -lft -o $(NAME)
-
-ifeq ($(UNAME), Linux)
 libmlx: $(HEADER_MLX)
-	make -C ./mlx
-	cp ./mlx/libmlx.dylib libmlx.dylib
-endif
-
-ifeq ($(UNAME), Linux)
-libmlx: $(HEADER_MLX)
-	make -C ./mlx
-	cp ./mlx/libmlx.dylib libmlx.dylib
-endif
-libmlx: $(HEADER_MLX)
-	make -C ./mlx
-	cp ./mlx/libmlx.dylib libmlx.dylib
+	make -C $(PATHMLX)
+	cp $(PATHMLX)/libmlx.dylib libmlx.dylib
 
 ${LIBFT}: 
-	make -C ./libft
-	make bonus -C ./libft
+	make -C ./libs/libft
+	make bonus -C ./libs/libft
 
 clean:
 	${MAKE} clean $(LIBFTPATH)
-	${MAKE} clean -C ./mlx
+	${MAKE} clean -C $(PATHMLX)
 
 fclean: clean
 	make fclean $(LIBFTPATH)
