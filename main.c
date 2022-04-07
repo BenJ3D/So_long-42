@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/06 17:47:11 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/07 19:47:31 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int ac, char **av)
 	//		fin initiation mlx **//
 	
 	define_all_png_to_image(&game);
+	
 	mlx_put_image_to_window(game.mlx, game.windows, game.ground.img, 64, 64);
 	mlx_put_image_to_window(game.mlx, game.windows, game.door.img,
 		game.wall.w, game.wall.h);

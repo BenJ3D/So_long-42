@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/06 17:55:12 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/07 19:38:23 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,19 @@ void	write_error_type(t_data *game)
 		ft_putstr("Error number of argument :\nPlease enter one path argument\n");
 	else if (game->error == ERROR_FILE_TYPE)
 		ft_putstr("Error file type :\nFile is not .ber extension\n");
+}
+
+//TODO: FIXME: le virer
+int	check_name_file(char *str, char *filetype)
+{
+	int	i;
+	int	y;
+	
+	i = ft_strlen(str);
+	y = ft_strlen(filetype);
+	if ((i + y) <= y)
+		return (1);
+	return (0);
 }
 
 /**

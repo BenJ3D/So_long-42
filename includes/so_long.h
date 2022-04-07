@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/06 17:49:18 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/07 19:19:05 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ enum	e_error
 	NO_ERROR,
 	ERROR_ARG_NBR,
 	ERROR_FILE_TYPE,
+	NO_NAME,
 	ERROR_MAP
 };
 typedef struct s_png
