@@ -6,18 +6,25 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/07 19:38:23 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/08 20:46:16 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	write_error_type(t_data *game)
+int	write_error_type(t_data *game)
 {
 	if (game->error == ERROR_ARG_NBR)
-		ft_putstr("Error number of argument :\nPlease enter one path argument\n");
+		ft_putstr("Error\nPlease enter one path argument\n");
 	else if (game->error == ERROR_FILE_TYPE)
-		ft_putstr("Error file type :\nFile is not .ber extension\n");
+		ft_putstr("Error\n File is not .ber extension\n");
+	else if (game->error == ERROR_CHAR_NO_VALID)
+		ft_putstr("Error\n unknown character in the card, \
+	are allowed:\n1 : Wall\n0 : Empty location\nC : Collectible\nE\
+ : Exit\nP : Position player");
+	if (game->error != NO_ERROR)
+		exit(0);
+	return (0);
 }
 
 //TODO: FIXME: le virer

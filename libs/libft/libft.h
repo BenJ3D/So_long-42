@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:59:56 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/06 16:52:47 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/08 18:04:04 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_putendl_fd(char *s, int fd);
 int		ft_putnbr_fd(int n, int fd);
 int		ft_putnbr(int n);
 int		ft_putchar_fd(char c, int fd);
+int		ft_putchar(char c);
 int		ft_intlen(long long nb);
 int		ft_putunnbr_fd(unsigned int n, int fd);
 

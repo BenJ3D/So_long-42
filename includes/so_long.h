@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/07 19:19:05 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/08 20:17:32 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,61 @@
 # define X_EVENT_KEY_EXIT		17 //exit key code
 # define SIZE_PNG				64
 
+/****------------ enum ------------****/
 enum	e_error
 {
 	NO_ERROR,
 	ERROR_ARG_NBR,
 	ERROR_FILE_TYPE,
-	NO_NAME,
-	ERROR_MAP
+	ERROR_FILE_NOT_EXIST,
+	ERROR_NO_NAME,
+	ERROR_MAP,
+	ERROR_CHAR_NO_VALID
 };
+
+enum	e_type_obj
+{
+	WALL='1',
+	GROUND='0',
+	ITEM='C',
+	DOOR='E',
+	PLAYER='P'
+};
+
+enum	e_key
+{
+	touch_w=13,
+	touch_d=2,
+	touch_a=0,
+	touch_s=1,
+	touch_up=126,
+	touch_down=125,
+	touch_left=123,
+	touch_right=124,
+	touch_esc=53
+};
+
+/****----------- struct -----------****/
+typedef struct s_tile // trop complex A VIRER TODO:
+{
+	int				x;
+	int				y;
+	enum e_type_obj	type;
+}			t_tile;
+typedef struct s_map
+{
+	char			*tile;
+	int				i;
+	int				lenx;
+	int				lenx_before;
+	int				leny;
+}			t_map;
 typedef struct s_png
 {
 	int		w;
 	int		h;
 	void	*img;
-	char	path[256];
+	char	path[255];
 }				t_png;
 typedef struct s_player
 {
@@ -66,23 +107,13 @@ typedef struct s_data
 	t_png			door;
 	t_png			ground;
 	t_png			wall;
+	int				i_map;
+	t_map			map;
 	enum e_error	error;
 }				t_data;
 
-enum	e_key
-{
-	touch_w=13,
-	touch_d=2,
-	touch_a=0,
-	touch_s=1,
-	touch_up=126,
-	touch_down=125,
-	touch_left=123,
-	touch_right=124,
-	touch_esc=53
-};
 
-/******-------------srcs --------------------******/
+/******-------------intialise img --------------------******/
 /**
  * @brief ft test pour compile make file correctement
  * 
@@ -90,10 +121,14 @@ enum	e_key
 void	define_all_png_to_image(t_data *game);
 
 /******-----------parsing--------------------******/
-int	parsing_map(t_data	*game);
+//int	parsing_map(t_data	*game);
+
+
+/******-----------manage open file--------------------******/
+int		ft_open_file(char *path);
 
 /******-----------manage error---------------******/
-void	write_error_type(t_data *game);
+int		write_error_type(t_data *game);
 int		check_type_file(char *str, char *filetype);
 int		check_norm_arg_is_ok(int ac, char *str, t_data *game);
 

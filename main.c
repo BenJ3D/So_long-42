@@ -6,11 +6,11 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/07 19:47:31 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/08 17:41:55 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//TODO: ressoudre gestion filename error // au moins un char avant le .
+//TODO: OU PAS, CHOIX ?? ressoudre gestion filename error // au moins un char avant le .
 #include "./includes/so_long.h"
 #define LPX 512	
 #define HPX 512
@@ -20,10 +20,7 @@ int	main(int ac, char **av)
 	t_data	game;
 	
 	if (check_norm_arg_is_ok(ac, av[1], &game) == 0)
-	{
-		write_error_type(&game);
-		return (0);
-	}
+		return (write_error_type(&game));
 	//parsing_map(&game);
 	game.img_width = LPX;
 	game.img_height = HPX;

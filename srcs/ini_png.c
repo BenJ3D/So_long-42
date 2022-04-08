@@ -6,12 +6,12 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 13:49:23 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/06 15:36:58 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/08 20:48:33 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
+//gerer les open
 static void	filename_path(t_data *game)
 {
 	ft_strlcpy(game->ground.path, "./srcs/png/ground.png", 22);
