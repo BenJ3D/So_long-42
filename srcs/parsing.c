@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 05:38:47 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 06:02:46 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,10 @@ int	put_good_img_debug(t_data *game, char *line)
 
 int		make_map(t_data *game, char *line) //TODO: MALLOC TILE + JOINT! // passer en juste ft check char ?
 {
-	static int	x = 0;
+	int	i;
 
-	if (!line)
-		return (0);
-	while (*line != '\n')
+	i = 0;
+	while (*line)
 	{
 		if (*line == WALL)
 			game->map.tile[x] = WALL;
@@ -71,7 +70,6 @@ int		make_map(t_data *game, char *line) //TODO: MALLOC TILE + JOINT! // passer e
 		line++;
 		x++;
 	}
-	game->map.lenx = x;
 	return (0);
 }
 
@@ -111,25 +109,21 @@ int		make_mapOLD(t_data *game, char *line) //TODO: MALLOC TILE + JOINT! // passe
 int	fill_data_map(t_data *game, int fd)
 {
 	static int		lentmp = 0;
-	int				i;
-	int				b;
 	char			*tmp;
 	
-	i = 0;
-	b = 0;
 	game->line = get_next_line(fd);
 	if (!game->line)
 		return (0);
 	game->map.lenx = ft_strlen(game->line);
 	if(game->line[game->map.lenx - 1] == '\n')
 		game->line[game->map.lenx - 1] = '\0';
-	lentmp = ft_strlen(game->line);  //save pour compare le prochain tour
-
+	lentmp = game->map.lenx - 1);  //save pour compare le prochain tour
 	tmp = ft_strdup(game->map.tile);
 	free(game->map.tile);
 	game->map.tile = ft_strjoin(tmp, game->line);
 	free(tmp);
 	free(game->line);
+	printf("len x %d\n", lentmp);
 	return (0);
 }
 
@@ -146,9 +140,8 @@ int	parsing_map(t_data	*game, char *pathfile)
 	{
 		if(fill_data_map(game, fd))
 			write_error_type(game);
-		
-		// if (put_good_img_debug(game, line))
-		// 	write_error_type(game);
+		if (put_good_img_debug(game, line))
+			write_error_type(game);
 		if (!game->line)
 			break;
 		//printf("  |||||\n\n");
