@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 04:36:56 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 07:19:46 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ enum	e_error
 	ERROR_NO_NAME,
 	ERROR_MAP,
 	ERROR_MAP_NO_RECT,
-	ERROR_CHAR_NO_VALID
+	ERROR_CHAR_NO_VALID,
+	ERROR_NO_PLAYER,
+	ERROR_NO_ITEM,
+	ERROR_NO_EXIT
 };
 
 enum	e_type_obj

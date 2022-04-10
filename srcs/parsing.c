@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 06:53:26 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 07:21:32 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 int	put_good_img_debug(t_data *game, char *line)
 {
-	if (!line)
-		return (0);
+	int	i;
+
+	i = 0;
 	while (*line)
 	{
+		if (i == game->map.lenx)
+			{
+				printf(" |||||\n");
+				i = 0;
+			}
 		if (*line == WALL)
 		{
 			printf("  wall  ");
@@ -38,12 +44,13 @@ int	put_good_img_debug(t_data *game, char *line)
 		{
 			printf(" PLAYER ");
 		}
+		i++;
 		line++;
 	}
 	return (0);
 }
 
-int		make_map(t_data *game, char *line)
+int		make_map(t_data *game, char *line) // obselete
 {
 	int	i;
 	int	x;
@@ -136,6 +143,42 @@ int	fill_data_map(t_data *game, int fd)
 	return (0);
 }
 
+int check_minimum_required(t_data *game)
+{
+	int	c;
+	int	e;
+	int	p;
+	int i;
+	
+	c = 0;
+	e = 0;
+	p = 0;
+	i = 0;
+	while (game->map.tile[i])
+	{
+		if (game->map.tile[i] == PLAYER)
+			p++;
+		if (game->map.tile[i] == DOOR)
+			e++;
+		if (game->map.tile[i] == ITEM)
+			c++;
+			i++;
+	}
+	if (c == 0)
+		game->error = ERROR_NO_ITEM;
+	if (e == 0)
+		game->error = ERROR_NO_EXIT;
+	if (p == 0)
+		game->error = ERROR_NO_PLAYER;
+	return (0);
+}
+
+int	check_wall_close_map(t_data *game)
+{
+	
+	return (0);
+}
+
 int	parsing_map(t_data	*game, char *pathfile)
 {
 	int		fd;
@@ -149,13 +192,14 @@ int	parsing_map(t_data	*game, char *pathfile)
 	{
 		if(fill_data_map(game, fd))
 			write_error_type(game);
-		// if (put_good_img_debug(game, line))
-		// 	write_error_type(game);
+		
 		if (!game->line)
 			break;
 		//printf("  |||||\n\n");
 	}
-	printf("%s", game->map.tile);
+	if (put_good_img_debug(game, game->map.tile))
+			write_error_type(game);
+	//printf("%s", game->map.tile);
 
 	return (fd);
 }
