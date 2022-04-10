@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 00:44:20 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 01:19:20 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	main(int ac, char **av)
 	// game.img_height = HPX;
 	game.mlx = mlx_init();
 	
-	define_all_png_to_image(&game);
+	//define_all_png_to_image(&game);
+	define_all_xpm_to_image(&game);
 
 	//////// START PARSING /////////
 	game.error = NO_ERROR;
@@ -35,7 +36,7 @@ int	main(int ac, char **av)
 	game.map.leny = (ft_strlen(game.map.tile) / game.map.lenx);
 	game.img_width = game.wall.w * game.map.lenx;
 	game.img_height = game.wall.h * game.map.leny;
-	printf("debig leny %d\n", (int)ft_strlen(game.map.tile));
+	//printf("debig leny %d\n", (int)ft_strlen(game.map.tile));
 	////////////
 	
 	//** setup mlx **///
@@ -44,6 +45,7 @@ int	main(int ac, char **av)
 	game.img = mlx_new_image(game.mlx, game.img_width, game.img_height);
 	game.addr = mlx_get_data_addr(game.img, &game.bits_per_pixel,
 			&game.line_length, &game.endian);
+	
 	//		fin setup mlx **//
 	
 	push_tile_to_win(&game);

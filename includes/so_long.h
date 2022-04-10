@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 00:15:50 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 01:15:03 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ typedef struct s_data
 /******----------------- intialise img ----------------------******/
 
 void	define_all_png_to_image(t_data *game);
+void	define_all_xpm_to_image(t_data *game);
 
 /******------------------ parsing ------------------------******/
 

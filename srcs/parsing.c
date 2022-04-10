@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 00:45:15 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 01:08:20 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	push_tile_to_win(t_data *game)
 		if (game->map.tile[index] != GROUND)
 		{
 			mlx_put_image_to_window(game->mlx, game->windows, 
-				game->wall.img, sizepng * posx, sizepng * posy);
+				game->wall.img, game->wall.w * posx, game->wall.h * posy);
 		}
 		if (game->map.tile[index] != WALL)
 		{
