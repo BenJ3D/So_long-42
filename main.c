@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 01:19:20 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 01:47:03 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,22 @@ int	main(int ac, char **av)
 	game.error = NO_ERROR;
 	parsing_map(&game, av[1]);
 	game.map.leny = (ft_strlen(game.map.tile) / game.map.lenx);
-	game.img_width = game.wall.w * game.map.lenx;
-	game.img_height = game.wall.h * game.map.leny;
+	game.img_width = game.wall.w * game.map.lenx+5;
+	game.img_height = game.wall.h * game.map.leny +5;
 	//printf("debig leny %d\n", (int)ft_strlen(game.map.tile));
 	////////////
 	
 	//** setup mlx **///
 	game.windows = mlx_new_window(game.mlx, game.img_width,
 			game.img_height, "so_long");
-	game.img = mlx_new_image(game.mlx, game.img_width, game.img_height);
+	game.img = mlx_new_image(game.mlx, game.img_width + 5, game.img_height + 5);
 	game.addr = mlx_get_data_addr(game.img, &game.bits_per_pixel,
 			&game.line_length, &game.endian);
-	
+	unsigned int *lol = (unsigned int *)game.addr;
+	size_t	i = 0;
+	while (i < (game.img_width + 5) * (game.img_height + 5))
+		lol[i++] = 0x00ffffff;
+	mlx_put_image_to_window(game.mlx, game.windows, game.img, 0, 0);
 	//		fin setup mlx **//
 	
 	push_tile_to_win(&game);
