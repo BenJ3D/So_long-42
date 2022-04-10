@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/10 22:57:59 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/10 23:42:38 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,10 @@ ${LIBFT}:
 
 ${GNL}:
 	make -C ./libs/gnl
+
+parsing: ${OBJS} ${GNL} ${LIBFT} $(HEADER)
+	${CC} ${FS} ${CFLAGS} libmlx.dylib -framework OpenGL -framework AppKit -lz \
+	$(LIBFT) ${GNL} $(OBJS)
 
 clean:
 	${MAKE} clean $(LIBFTPATH)

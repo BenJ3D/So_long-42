@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 21:58:54 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 00:28:05 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,67 +51,51 @@ int	put_good_img_debug(t_data *game, char *line)  //put text debug
 	return (0);
 }
 
-int		make_map(t_data *game, char *line) // obselete
+int	push_tile_to_win(t_data *game)
 {
-	int	i;
-	int	x;
+	int	posx;
+	int	posy;
+	int	index;
 
-	i = 0;
-	while (*line)
+	posx = 0;
+	posy = 0;
+	index = 0;
+	while (game->map.tile[index])
 	{
-		if (*line == WALL)
-			game->map.tile[x] = WALL;
-		else if (*line == GROUND)
-			game->map.tile[x] = GROUND;
-		else if (*line == ITEM)
-			game->map.tile[x] = ITEM;
-		else if (*line == DOOR)
-			game->map.tile[x] = DOOR;
-		else if (*line == PLAYER)
-			game->map.tile[x] = PLAYER;
-		else if (*line == '\0')
-			return (0);
-		else
+		if (posx == game->map.lenx)
+			{
+				posx = 0;
+				posy++;
+				game->map.leny++; // dependance ? ou a virer
+			}
+		if (game->map.tile[index] != GROUND)
 		{
-			game->error = ERROR_MAP_CHAR_NO_VALID;
-			return (1); 
+			mlx_put_image_to_window(game->mlx, game->windows, 
+				game->wall.img, game->wall.h * posx, game->wall.h * posy);
 		}
-		line++;
-		x++;
-	}
-	return (0);
-}
-
-int		make_mapOLD(t_data *game, char *line)
-{
-	int	x;
-
-	x = 0;
-	if (!line)
-		return (0);
-	while (*line != '\n')
-	{
-		if (*line == WALL)
-			game->map.tile[x] = WALL;
-		else if (*line == GROUND)
-			game->map.tile[x] = GROUND;
-		else if (*line == ITEM)
-			game->map.tile[x] = ITEM;
-		else if (*line == DOOR)
-			game->map.tile[x] = DOOR;
-		else if (*line == PLAYER)
-			game->map.tile[x] = PLAYER;
-		else if (*line == '\0')
-			return (0);
-		else
+		if (game->map.tile[index] != WALL)
 		{
-			game->error = ERROR_MAP_CHAR_NO_VALID;
-			return (1); 
+			mlx_put_image_to_window(game->mlx, game->windows, 
+				game->ground.img, game->ground.h * posx, game->ground.h * posy);
 		}
-		line++;
-		x++;
+		if (game->map.tile[index] == ITEM)
+		{
+			mlx_put_image_to_window(game->mlx, game->windows, 
+				game->item.img, game->item.h * posx, game->item.h * posy);
+		}
+		else if (game->map.tile[index] == DOOR)
+		{
+			mlx_put_image_to_window(game->mlx, game->windows, 
+				game->door.img, game->door.h * posx, game->door.h * posy);
+		}
+		else if (game->map.tile[index] == PLAYER)
+		{
+			mlx_put_image_to_window(game->mlx, game->windows, 
+				game->player.png.img, game->player.png.h * posx, game->player.png.h * posy);
+		}
+		posx++;
+		index++;
 	}
-	game->map.lenx = x;
 	return (0);
 }
 
@@ -221,7 +205,6 @@ int	parsing_map(t_data	*game, char *pathfile)
 	char	line;
 	
 	game->map.bool = 0;
-	// fd = open(pathfile, O_RDONLY);
 	fd = ft_open_file(pathfile, game);
 	game->map.tile = ft_strdup("");
 	game->map.leny = 1;
@@ -231,7 +214,6 @@ int	parsing_map(t_data	*game, char *pathfile)
 			write_error_type(game);
 		if (!game->line)
 			break;
-		//printf("  |||||\n\n");
 	}
 	if (check_minimum_required(game))
 		write_error_type(game);
@@ -240,22 +222,18 @@ int	parsing_map(t_data	*game, char *pathfile)
 	if (put_good_img_debug(game, game->map.tile))
 		write_error_type(game);
 	printf("\nlenx = %d\nleny = %d\n", game->map.lenx, game->map.leny);
-
-	//printf("%s", game->map.tile);
-
-	return (fd);
+	return (0);
 }
 
-// int main()
+// int main(int ac, char **av)
 // {
 // 	char path[] = "maps/02.ber";
 // 	int	fd;
 // 	t_data	game;
-	
-// 	if ((fd = parsing_map(&game, path)) > 0)
-// 		//printf("SUCCESS OPEN\n");
-// 	//else
-// 		//printf("FAIL TO OPEN\n");
+// 	if (ac != 2)
+// 		fd = parsing_map(&game, path);
+// 	else
+// 		fd = parsing_map(&game, av[1]);
 // 	//printf("map tile %c\n\n", game.map.tile[0]);
 // 	free(game.map.tile);
 // 	return (0);

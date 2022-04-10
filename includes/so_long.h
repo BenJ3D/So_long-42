@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 20:48:27 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 00:15:50 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,12 +131,14 @@ typedef struct s_data
 void	define_all_png_to_image(t_data *game);
 
 /******------------------ parsing ------------------------******/
-//int	parsing_map(t_data	*game);
+
+int	parsing_map(t_data	*game, char *pathfile);
 
 
 /******-------------- manage open file -------------------******/
 
 int		ft_open_file(char *path, t_data *game);
+int		put_good_img_debug(t_data *game, char *line);
 
 /******--------------- manage error --------------------******/
 
@@ -148,6 +150,10 @@ int		check_norm_arg_is_ok(int ac, char *str, t_data *game);
 /******------------------- utils ---------------------******/
 
 int	ft_str_search_char(char *str, char c);
+
+/******-------------- image management ---------------******/
+
+int	push_tile_to_win(t_data *game);
 
 /******------------------ practice function -------*/
 
