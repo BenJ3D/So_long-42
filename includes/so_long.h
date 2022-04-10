@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 19:56:23 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 20:48:27 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,9 @@ typedef struct s_tile // trop complex A VIRER TODO:
 {
 	int				x;
 	int				y;
-	enum e_type_obj	type;
+	char			c;
 }			t_tile;
+
 typedef struct s_map
 {
 	char			*tile;

@@ -6,13 +6,13 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 20:02:19 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 21:39:10 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	put_good_img_debug(t_data *game, char *line)
+int	put_good_img_debug(t_data *game, char *line)  //put text debug
 {
 	int	i;
 
@@ -207,6 +207,14 @@ int	check_wall_close_map(t_data *game)
 	return (0);
 }
 
+/**
+ * @brief copy toute la map dans game.map.tile
+ * et gère la detection des erreurs de file ou mapping 
+ *  ATTENTION free game.map.tile a faire
+ * @param game 
+ * @param pathfile 
+ * @return int 
+ */
 int	parsing_map(t_data	*game, char *pathfile)
 {
 	int		fd;
