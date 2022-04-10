@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 00:42:04 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 00:45:15 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,12 @@ int	push_tile_to_win(t_data *game)
 	int	posx;
 	int	posy;
 	int	index;
-
+	int		sizepng;
+	
+	sizepng = 64;
 	posx = 0;
 	posy = 0;
 	index = 0;
-	game->wall.h--;
 	while (game->map.tile[index])
 	{
 		if (posx == game->map.lenx)
@@ -72,32 +73,31 @@ int	push_tile_to_win(t_data *game)
 		if (game->map.tile[index] != GROUND)
 		{
 			mlx_put_image_to_window(game->mlx, game->windows, 
-				game->wall.img, game->wall.h * posx, game->wall.h * posy);
+				game->wall.img, sizepng * posx, sizepng * posy);
 		}
 		if (game->map.tile[index] != WALL)
 		{
 			mlx_put_image_to_window(game->mlx, game->windows, 
-				game->ground.img, game->ground.h * posx, game->ground.h * posy);
+				game->ground.img, sizepng * posx, sizepng * posy);
 		}
 		if (game->map.tile[index] == ITEM)
 		{
 			mlx_put_image_to_window(game->mlx, game->windows, 
-				game->item.img, game->item.h * posx, game->item.h * posy);
+				game->item.img, sizepng * posx, sizepng * posy);
 		}
 		else if (game->map.tile[index] == DOOR)
 		{
 			mlx_put_image_to_window(game->mlx, game->windows, 
-				game->door.img, game->door.h * posx, game->door.h * posy);
+				game->door.img, sizepng * posx, sizepng * posy);
 		}
 		else if (game->map.tile[index] == PLAYER)
 		{
 			mlx_put_image_to_window(game->mlx, game->windows, 
-				game->player.png.img, game->player.png.h * posx, game->player.png.h * posy);
+				game->player.png.img, sizepng * posx, sizepng * posy);
 		}
 		posx++;
 		index++;
 	}
-	game->wall.h++;
 	return (0);
 }
 
