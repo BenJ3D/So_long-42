@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 16:37:57 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 19:59:54 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,25 @@ int	write_error_type(t_data *game)
 	if (game->error == ERROR_ARG_NBR)
 		ft_putstr("Error\nPlease enter one path argument\n");
 	else if (game->error == ERROR_FILE_TYPE)
-		ft_putstr("Error\n File is not .ber extension\n");
-	else if (game->error == ERROR_CHAR_NO_VALID)
+		ft_putstr("Error\nFile is not .ber extension\n");
+	else if (game->error == ERROR_MAP_CHAR_NO_VALID)
 		ft_putstr("Error\nUnknown character detected,\
  are allowed:\n1 : Wall\n0 : Empty location\nC : Collectible\nE\
  : Exit\nP : Position player");
 	else if (game->error == ERROR_MAP_NO_RECT)
-		ft_putstr("Error\n Map is not rectangular\n");
-	else if (game->error == ERROR_NO_PLAYER)
-		ft_putstr("Error\n Please add one 'P' on map for position player \
+		ft_putstr("Error\nMap is not rectangular\n");
+	else if (game->error == ERROR_MAP_NO_PLAYER)
+		ft_putstr("Error\nPlease add one 'P' on map for position player \
 start position\n");
-	else if (game->error == ERROR_NO_ITEM)
-		ft_putstr("Error\n Please add minimum one 'C' \
+	else if (game->error == ERROR_MAP_NO_ITEM)
+		ft_putstr("Error\nPlease add minimum one 'C' \
 collectible item on map\n");
-	else if (game->error == ERROR_NO_EXIT)
-		ft_putstr("Error\n Please add minimum one 'E' in map for exit game\n");
+	else if (game->error == ERROR_MAP_NO_EXIT)
+		ft_putstr("Error\nPlease add minimum one 'E' in map for exit game\n");
+	else if (game->error == ERROR_MAP_WALL)
+		ft_putstr("Error\nThe map is not closed with walls on all exteriors\n");
+	else if (game->error == ERROR_FILE_NOT_EXIST)
+		ft_putstr("Error\nThe file don't exist or is corrupted\n");
 	if (game->error != NO_ERROR)
 		exit(0);
 	return (0);

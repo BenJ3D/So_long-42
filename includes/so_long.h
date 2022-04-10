@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 16:25:09 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 19:56:23 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,14 @@ enum	e_error
 	ERROR_ARG_NBR,
 	ERROR_FILE_TYPE,
 	ERROR_FILE_NOT_EXIST,
-	ERROR_NO_NAME,
+	ERROR_FILE_NO_NAME, //FIXME: accepter les ".ber" ?
 	ERROR_MAP,
 	ERROR_MAP_NO_RECT,
-	ERROR_CHAR_NO_VALID,
-	ERROR_NO_PLAYER,
-	ERROR_NO_ITEM,
-	ERROR_NO_EXIT
+	ERROR_MAP_CHAR_NO_VALID,
+	ERROR_MAP_NO_PLAYER,
+	ERROR_MAP_NO_ITEM,
+	ERROR_MAP_NO_EXIT,
+	ERROR_MAP_WALL
 };
 
 enum	e_type_obj
@@ -125,10 +126,7 @@ typedef struct s_data
 
 
 /******----------------- intialise img ----------------------******/
-/**
- * @brief ft test pour compile make file correctement
- * 
- */
+
 void	define_all_png_to_image(t_data *game);
 
 /******------------------ parsing ------------------------******/
@@ -136,18 +134,22 @@ void	define_all_png_to_image(t_data *game);
 
 
 /******-------------- manage open file -------------------******/
-int		ft_open_file(char *path);
+
+int		ft_open_file(char *path, t_data *game);
 
 /******--------------- manage error --------------------******/
+
 int		write_error_type(t_data *game);
 int		check_type_file(char *str, char *filetype);
 int		check_norm_arg_is_ok(int ac, char *str, t_data *game);
 
 
 /******------------------- utils ---------------------******/
+
 int	ft_str_search_char(char *str, char c);
 
 /******------------------ practice function -------*/
+
 int		trace_door(t_data *game);
 int		trace_apple(t_data *game);
 int		trace_player(t_data *game);

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 13:49:23 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/08 20:48:33 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 18:51:33 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	filename_path(t_data *game)
 /**
  * @brief save all png file for project in mlx img
  * 
+ * @param game 
  */
 void	define_all_png_to_image(t_data *game)
 {

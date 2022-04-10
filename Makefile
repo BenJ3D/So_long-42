@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/08 18:05:23 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/10 18:50:28 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ PATHMLX = ./libs/mlx
 FS = #-fsanitize=address -g3
 
 PATH_SRCS = ./
-FILES_SRCS =	ini_png parsing error open_file
+FILES_SRCS =	ini_png parsing error open_file utils
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_SRCS)))

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 16:33:38 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 20:02:19 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	put_good_img_debug(t_data *game, char *line)
 			{
 				printf(" |||||\n");
 				i = 0;
+				game->map.leny++;
 			}
 		if (*line == WALL)
 		{
@@ -72,7 +73,7 @@ int		make_map(t_data *game, char *line) // obselete
 			return (0);
 		else
 		{
-			game->error = ERROR_CHAR_NO_VALID;
+			game->error = ERROR_MAP_CHAR_NO_VALID;
 			return (1); 
 		}
 		line++;
@@ -104,7 +105,7 @@ int		make_mapOLD(t_data *game, char *line)
 			return (0);
 		else
 		{
-			game->error = ERROR_CHAR_NO_VALID;
+			game->error = ERROR_MAP_CHAR_NO_VALID;
 			return (1); 
 		}
 		line++;
@@ -114,6 +115,13 @@ int		make_mapOLD(t_data *game, char *line)
 	return (0);
 }
 
+/**
+ * @brief fill *tile str with all char map, whitout space or new line
+ * 
+ * @param game 
+ * @param fd
+ * @return int 
+ */
 int	fill_data_map(t_data *game, int fd)
 {
 	static int		lentmp = 0;
@@ -143,6 +151,12 @@ int	fill_data_map(t_data *game, int fd)
 	return (0);
 }
 
+/**
+ * @brief check if all required elements are present
+ * 
+ * @param game 
+ * @return int 
+ */
 int check_minimum_required(t_data *game)
 {
 	int	c;
@@ -154,11 +168,11 @@ int check_minimum_required(t_data *game)
 	e = ft_str_search_char(game->map.tile, DOOR);
 	p = ft_str_search_char(game->map.tile, PLAYER);
 	if (c <= 0)
-		game->error = ERROR_NO_ITEM;
+		game->error = ERROR_MAP_NO_ITEM;
 	else if (p <= 0)
-		game->error = ERROR_NO_PLAYER;
+		game->error = ERROR_MAP_NO_PLAYER;
 	else if (e <= 0)
-		game->error = ERROR_NO_EXIT;
+		game->error = ERROR_MAP_NO_EXIT;
 	if (game->error != NO_ERROR)
 		write_error_type(game);
 	return (0);
@@ -166,7 +180,30 @@ int check_minimum_required(t_data *game)
 
 int	check_wall_close_map(t_data *game)
 {
-	
+	int	posx;
+	int	posy;
+	int	i;
+	posx = 1;
+	posy = 1;
+	i = 0;
+	game->map.leny = (int)ft_strlen(game->map.tile) / game->map.lenx;
+	while(game->map.tile[i])
+	{
+		if (((posy == 1) || (posx == 1) || (posy == game->map.leny) || \
+(posx == game->map.lenx)) && game->map.tile[i] != WALL)
+		{
+			game->error = ERROR_MAP_WALL;
+			write_error_type(game);
+		}
+		if (posx == game->map.lenx)
+		{
+			posx = 1;
+			posy++;
+		}
+		else
+			posx++;
+		i++;
+	}
 	return (0);
 }
 
@@ -176,9 +213,10 @@ int	parsing_map(t_data	*game, char *pathfile)
 	char	line;
 	
 	game->map.bool = 0;
-	fd = open(pathfile, O_RDONLY);
+	// fd = open(pathfile, O_RDONLY);
+	fd = ft_open_file(pathfile, game);
 	game->map.tile = ft_strdup("");
-
+	game->map.leny = 1;
 	while (1)
 	{
 		if(fill_data_map(game, fd))
@@ -188,9 +226,13 @@ int	parsing_map(t_data	*game, char *pathfile)
 		//printf("  |||||\n\n");
 	}
 	if (check_minimum_required(game))
-			write_error_type(game);
+		write_error_type(game);
+	if (check_wall_close_map(game))
+		write_error_type(game);
 	if (put_good_img_debug(game, game->map.tile))
-			write_error_type(game);
+		write_error_type(game);
+	printf("\nlenx = %d\nleny = %d\n", game->map.lenx, game->map.leny);
+
 	//printf("%s", game->map.tile);
 
 	return (fd);
@@ -198,7 +240,7 @@ int	parsing_map(t_data	*game, char *pathfile)
 
 int main()
 {
-	char path[] = "maps/01.ber";
+	char path[] = "maps/02.ber";
 	int	fd;
 	t_data	game;
 	
