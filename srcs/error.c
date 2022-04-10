@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 00:30:55 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 16:37:57 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ int	write_error_type(t_data *game)
  : Exit\nP : Position player");
 	else if (game->error == ERROR_MAP_NO_RECT)
 		ft_putstr("Error\n Map is not rectangular\n");
+	else if (game->error == ERROR_NO_PLAYER)
+		ft_putstr("Error\n Please add one 'P' on map for position player \
+start position\n");
+	else if (game->error == ERROR_NO_ITEM)
+		ft_putstr("Error\n Please add minimum one 'C' \
+collectible item on map\n");
+	else if (game->error == ERROR_NO_EXIT)
+		ft_putstr("Error\n Please add minimum one 'E' in map for exit game\n");
 	if (game->error != NO_ERROR)
 		exit(0);
 	return (0);

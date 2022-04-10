@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 07:19:46 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 16:25:09 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,24 +124,28 @@ typedef struct s_data
 }				t_data;
 
 
-/******-------------intialise img --------------------******/
+/******----------------- intialise img ----------------------******/
 /**
  * @brief ft test pour compile make file correctement
  * 
  */
 void	define_all_png_to_image(t_data *game);
 
-/******-----------parsing--------------------******/
+/******------------------ parsing ------------------------******/
 //int	parsing_map(t_data	*game);
 
 
-/******-----------manage open file--------------------******/
+/******-------------- manage open file -------------------******/
 int		ft_open_file(char *path);
 
-/******-----------manage error---------------******/
+/******--------------- manage error --------------------******/
 int		write_error_type(t_data *game);
 int		check_type_file(char *str, char *filetype);
 int		check_norm_arg_is_ok(int ac, char *str, t_data *game);
+
+
+/******------------------- utils ---------------------******/
+int	ft_str_search_char(char *str, char c);
 
 /******------------------ practice function -------*/
 int		trace_door(t_data *game);

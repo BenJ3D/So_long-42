@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 07:21:32 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 16:33:38 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,27 +149,18 @@ int check_minimum_required(t_data *game)
 	int	e;
 	int	p;
 	int i;
-	
-	c = 0;
-	e = 0;
-	p = 0;
-	i = 0;
-	while (game->map.tile[i])
-	{
-		if (game->map.tile[i] == PLAYER)
-			p++;
-		if (game->map.tile[i] == DOOR)
-			e++;
-		if (game->map.tile[i] == ITEM)
-			c++;
-			i++;
-	}
-	if (c == 0)
+
+	c = ft_str_search_char(game->map.tile, ITEM);
+	e = ft_str_search_char(game->map.tile, DOOR);
+	p = ft_str_search_char(game->map.tile, PLAYER);
+	if (c <= 0)
 		game->error = ERROR_NO_ITEM;
-	if (e == 0)
-		game->error = ERROR_NO_EXIT;
-	if (p == 0)
+	else if (p <= 0)
 		game->error = ERROR_NO_PLAYER;
+	else if (e <= 0)
+		game->error = ERROR_NO_EXIT;
+	if (game->error != NO_ERROR)
+		write_error_type(game);
 	return (0);
 }
 
@@ -192,11 +183,12 @@ int	parsing_map(t_data	*game, char *pathfile)
 	{
 		if(fill_data_map(game, fd))
 			write_error_type(game);
-		
 		if (!game->line)
 			break;
 		//printf("  |||||\n\n");
 	}
+	if (check_minimum_required(game))
+			write_error_type(game);
 	if (put_good_img_debug(game, game->map.tile))
 			write_error_type(game);
 	//printf("%s", game->map.tile);
