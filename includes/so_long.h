@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/08 20:17:32 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 01:50:44 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,14 @@ enum	e_error
 	ERROR_FILE_NOT_EXIST,
 	ERROR_NO_NAME,
 	ERROR_MAP,
+	ERROR_MAP_NO_RECT,
 	ERROR_CHAR_NO_VALID
 };
 
 enum	e_type_obj
 {
 	WALL='1',
-	GROUND='0',
+	GROUND='0', 
 	ITEM='C',
 	DOOR='E',
 	PLAYER='P'
@@ -70,8 +71,9 @@ typedef struct s_map
 {
 	char			*tile;
 	int				i;
+	int				bool;
 	int				lenx;
-	int				lenx_before;
+	int				lenx_less1;
 	int				leny;
 }			t_map;
 typedef struct s_png
@@ -101,6 +103,7 @@ typedef struct s_data
 	char			*addr;
 	int				bits_per_pixel;
 	int				line_length;
+	char			*line;
 	int				endian;
 	t_player		player;
 	t_png			item;
