@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 21:39:10 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 21:58:54 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,17 +246,17 @@ int	parsing_map(t_data	*game, char *pathfile)
 	return (fd);
 }
 
-int main()
-{
-	char path[] = "maps/02.ber";
-	int	fd;
-	t_data	game;
+// int main()
+// {
+// 	char path[] = "maps/02.ber";
+// 	int	fd;
+// 	t_data	game;
 	
-	if ((fd = parsing_map(&game, path)) > 0)
-		//printf("SUCCESS OPEN\n");
-	//else
-		//printf("FAIL TO OPEN\n");
-	//printf("map tile %c\n\n", game.map.tile[0]);
-	free(game.map.tile);
-	return (0);
-}
+// 	if ((fd = parsing_map(&game, path)) > 0)
+// 		//printf("SUCCESS OPEN\n");
+// 	//else
+// 		//printf("FAIL TO OPEN\n");
+// 	//printf("map tile %c\n\n", game.map.tile[0]);
+// 	free(game.map.tile);
+// 	return (0);
+// }

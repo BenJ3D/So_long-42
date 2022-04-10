@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/10 18:50:28 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/10 22:57:59 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,11 +23,12 @@ HEADER = ./includes/so_long.h
 HEADER_MLX = ./libs/mlx/mlx.h
 LIBFTPATH = -C ./libs/libft
 LIBFT = ./libs/libft/libft.a
+GNL = ./libs/gnl/gnl.a
 PATHMLX = ./libs/mlx
 FS = #-fsanitize=address -g3
 
 PATH_SRCS = ./
-FILES_SRCS =	ini_png parsing error open_file utils
+FILES_SRCS =	ini_png parsing error open_file utils 
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_SRCS)))
@@ -35,14 +36,14 @@ SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_SRCS)))
 OBJS_DIR = ./srcs/
 OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_SRCS)))
 
-all : ${LIBFT} $(NAME)
+all : ${GNL} ${LIBFT} $(NAME)
 
 %.o: %.c $(SRCS) $(HEADER)
 	$(CC) $(CFLAGS) -c -o $@ $(OBJS_DIR)$< 
 
 $(NAME): ./main.c libmlx $(HEADER) $(OBJS)
 	${CC} ${FS} ${CFLAGS} main.c libmlx.dylib -framework OpenGL -framework AppKit -lz \
-	$(LIBFT) $(OBJS) -o $(NAME)
+	$(LIBFT) ${GNL} $(OBJS) -o $(NAME)
 
 libmlx: $(HEADER_MLX)
 	make -C $(PATHMLX)
@@ -52,13 +53,18 @@ ${LIBFT}:
 	make -C ./libs/libft
 	make bonus -C ./libs/libft
 
+${GNL}:
+	make -C ./libs/gnl
+
 clean:
 	${MAKE} clean $(LIBFTPATH)
 	${MAKE} clean -C $(PATHMLX)
+	${MAKE} clean -C ./libs/gnl
 	rm -rf $(OBJS)
 
 fclean: clean
-	make fclean $(LIBFTPATH)
+	${MAKE} fclean $(LIBFTPATH)
+	${MAKE} fclean -C ./libs/gnl
 	$(RM) $(NAME) libmlx.dylib
 	rm -d -rf .vscode so_long*
 

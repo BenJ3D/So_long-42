@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 18:33:21 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 02:45:31 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 23:02:51 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	ft_find_start(char *buf2)
 	return (i);
 }
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen_gnl(const char *str)
 {
 	size_t	i;
 
@@ -42,7 +42,7 @@ void	ft_strjoin_gnl(char **dst, char *line2, char *buf2, size_t buf_end)
 	size_t	start;
 
 	start = ft_find_start(buf2);
-	srcslen = ft_strlen(line2);
+	srcslen = ft_strlen_gnl(line2);
 	srcslen = srcslen + ((buf_end + 1) - start);
 	*dst = malloc((sizeof(char) * srcslen) + 1);
 	if (!dst)
@@ -63,13 +63,13 @@ void	ft_strjoin_gnl(char **dst, char *line2, char *buf2, size_t buf_end)
 		buf2[0] = '\0';
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup_gnl(const char *s1)
 {
 	char	*res;
 	size_t	i;
 
 	i = 0;
-	res = malloc(sizeof(char) * (ft_strlen((char *)s1) + 1));
+	res = malloc(sizeof(char) * (ft_strlen_gnl((char *)s1) + 1));
 	if (!res)
 		return (NULL);
 	while (s1[i])
@@ -89,7 +89,7 @@ void	ft_strjoin_gnl2(char **dst, char *line2, char *buf2, size_t buf_end)
 	size_t	start;
 
 	start = ft_find_start(buf2);
-	srcslen = ft_strlen(line2);
+	srcslen = ft_strlen_gnl(line2);
 	srcslen = srcslen + ((buf_end + 1) - start);
 	*dst = malloc((sizeof(char) * srcslen) + 1);
 	if (!dst)

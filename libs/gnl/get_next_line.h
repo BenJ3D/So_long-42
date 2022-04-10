@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 19:56:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2021/12/31 15:55:29 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 23:02:51 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char		*get_next_line(int fd);
 void		ft_strjoin_gnl(char **dst, char *src1, char *src2, size_t buf_end);
 int			ft_buf_process(char *bufp);
 int			ft_strichr_nl(char *str);
-char		*ft_strdup(const char *s1);
-size_t		ft_strlen(const char *str);
+char		*ft_strdup_gnl(const char *s1);
+size_t		ft_strlen_gnl(const char *str);
 
 #endif

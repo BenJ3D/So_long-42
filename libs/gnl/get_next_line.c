@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 20:00:04 by bducrocq          #+#    #+#             */
-/*   Updated: 2021/12/31 16:08:18 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 23:02:51 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static int	ft_read(int fd, int ret2, char *buf, char **line)
 		chr_nl = 1;
 	if (chr_nl == -2)
 	{
-		chr_nl = ft_strlen(*line);
+		chr_nl = ft_strlen_gnl(*line);
 		if (chr_nl != 0)
 			return (0);
 	}
@@ -106,10 +106,10 @@ char	*get_next_line(int fd)
 
 	if (read(fd, buf, 0) < 0 || BUFFER_SIZE == 0)
 		return (NULL);
-	line = ft_strdup("");
+	line = ft_strdup_gnl("");
 	ret = 0;
 	ret = ft_read(fd, ret, buf, &line);
-	ret = ft_strlen(line);
+	ret = ft_strlen_gnl(line);
 	if (ret == 0)
 	{
 		if (line)
