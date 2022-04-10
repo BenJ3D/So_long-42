@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 03:04:27 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 05:38:47 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ int	fill_data_map(t_data *game, int fd)
 	static int		lentmp = 0;
 	int				i;
 	int				b;
+	char			*tmp;
 	
 	i = 0;
 	b = 0;
@@ -120,32 +121,15 @@ int	fill_data_map(t_data *game, int fd)
 	if (!game->line)
 		return (0);
 	game->map.lenx = ft_strlen(game->line);
-	lentmp = game->map.lenx;  //save pour compare le prochain tour
-//	printf("lenx %d\n", lentmp);
-	// if (!game->map.tile && game->map.bool == 0)
-	// 	{
-	// 		game->map.tile = malloc(sizeof(char) * game->map.lenx);
-	// 		game->map.bool = 1;
-	// 	}
-	// while (b < lentmp - 1 )
-	// {
-	// 	game->map.tile[i] = game->line[b];
-	// 	i++;
-	// 	b++;
-	// }
-	// game->map.tile[i] = '\0';
-	//ft_strjoin(&game->map.tile, game->map.tile, game->line, lentmp - 1);
-	//game->map.tile = ft_strjoin(game->map.tile, game->line);
+	if(game->line[game->map.lenx - 1] == '\n')
+		game->line[game->map.lenx - 1] = '\0';
+	lentmp = ft_strlen(game->line);  //save pour compare le prochain tour
 
-	static char	*str;
-	
-	if (!str)
-		str = ft_strdup("");
-	str = ft_strjoin(str, game->line);
-	
-	printf("debug str : %s\n", str);
-	//free(game->line);
-	//printf("debug tile str euh : %s\n", game->map.tile);
+	tmp = ft_strdup(game->map.tile);
+	free(game->map.tile);
+	game->map.tile = ft_strjoin(tmp, game->line);
+	free(tmp);
+	free(game->line);
 	return (0);
 }
 
@@ -156,23 +140,21 @@ int	parsing_map(t_data	*game, char *pathfile)
 	
 	game->map.bool = 0;
 	fd = open(pathfile, O_RDONLY);
+	game->map.tile = ft_strdup("");
+
 	while (1)
 	{
-		// line = get_next_line(fd);
-		// game->map.lenx = ft_strlen(line);
-		//TODO: malloc et joint tile
-		//game->map.tile = malloc(sizeof(char) * game->map.lenx + 100000);
-		//game->map.tile = ft_strdup("");
-		// if(make_map(game, line))
-		// 	write_error_type(game);
 		if(fill_data_map(game, fd))
 			write_error_type(game);
+		
 		// if (put_good_img_debug(game, line))
 		// 	write_error_type(game);
 		if (!game->line)
 			break;
 		//printf("  |||||\n\n");
 	}
+	printf("%s", game->map.tile);
+
 	return (fd);
 }
 
@@ -183,10 +165,10 @@ int main()
 	t_data	game;
 	
 	if ((fd = parsing_map(&game, path)) > 0)
-		printf("SUCCESS OPEN\n");
-	else
-		printf("FAIL TO OPEN\n");
+		//printf("SUCCESS OPEN\n");
+	//else
+		//printf("FAIL TO OPEN\n");
 	//printf("map tile %c\n\n", game.map.tile[0]);
-	//free(game.map.tile);
+	free(game.map.tile);
 	return (0);
 }
