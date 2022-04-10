@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 18:33:21 by bducrocq          #+#    #+#             */
-/*   Updated: 2021/12/31 02:35:51 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 02:45:31 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,33 @@ char	*ft_strdup(const char *s1)
 	}
 	res[i] = 0;
 	return (res);
+}
+
+void	ft_strjoin_gnl2(char **dst, char *line2, char *buf2, size_t buf_end)
+{
+	size_t	i;
+	size_t	j;
+	size_t	srcslen;
+	size_t	start;
+
+	start = ft_find_start(buf2);
+	srcslen = ft_strlen(line2);
+	srcslen = srcslen + ((buf_end + 1) - start);
+	*dst = malloc((sizeof(char) * srcslen) + 1);
+	if (!dst)
+		return ;
+	j = 0;
+	i = 0;
+	while (line2[i])
+		dst[0][j++] = line2[i++];
+	i = start;
+	while (buf2[i] && i <= (size_t)buf_end)
+		dst[0][j++] = buf2[i++];
+	dst[0][j] = '\0';
+	if (line2)
+		free (line2);
+	if (BUFFER_SIZE > 1)
+		ft_buf_process(&*buf2);
+	else if (BUFFER_SIZE <= 1)
+		buf2[0] = '\0';
 }

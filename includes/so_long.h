@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 01:50:44 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 04:36:56 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ enum	e_key
 };
 
 /****----------- struct -----------****/
+typedef struct s_clist
+{
+	char			*content;
+	struct s_clist	*next;
+}					t_clist;
 typedef struct s_tile // trop complex A VIRER TODO:
 {
 	int				x;
