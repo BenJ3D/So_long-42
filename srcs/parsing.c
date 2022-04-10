@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 06:48:07 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/10 06:53:26 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	put_good_img_debug(t_data *game, char *line)
 	return (0);
 }
 
-int		make_map(t_data *game, char *line) //TODO: MALLOC TILE + JOINT! // passer en juste ft check char ?
+int		make_map(t_data *game, char *line)
 {
 	int	i;
 	int	x;
@@ -74,7 +74,7 @@ int		make_map(t_data *game, char *line) //TODO: MALLOC TILE + JOINT! // passer e
 	return (0);
 }
 
-int		make_mapOLD(t_data *game, char *line) //TODO: MALLOC TILE + JOINT! // passer en juste ft check char ?
+int		make_mapOLD(t_data *game, char *line)
 {
 	int	x;
 
@@ -106,7 +106,7 @@ int		make_mapOLD(t_data *game, char *line) //TODO: MALLOC TILE + JOINT! // passe
 	game->map.lenx = x;
 	return (0);
 }
-//TODO: faire un modulo a chaque tour sur lentmp pour check longueur line
+
 int	fill_data_map(t_data *game, int fd)
 {
 	static int		lentmp = 0;
@@ -117,14 +117,22 @@ int	fill_data_map(t_data *game, int fd)
 		return (0);
 	game->map.lenx = ft_strlen(game->line);
 	if(game->line[game->map.lenx - 1] == '\n')
+	{
 		game->line[game->map.lenx - 1] = '\0';
-	lentmp = game->map.lenx - 1;  //save pour compare le prochain tour
+		game->map.lenx--;
+	}
+	if (lentmp != game->map.lenx && game->map.bool == 1)
+	{
+		game->error = ERROR_MAP_NO_RECT;
+		write_error_type(game);
+	}
+	lentmp = game->map.lenx;  //save pour compare le prochain tour
 	tmp = ft_strdup(game->map.tile);
 	free(game->map.tile);
 	game->map.tile = ft_strjoin(tmp, game->line);
 	free(tmp);
 	free(game->line);
-	printf("len x %d\n", lentmp);
+	game->map.bool = 1;
 	return (0);
 }
 
