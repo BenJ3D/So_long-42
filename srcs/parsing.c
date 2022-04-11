@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 12:56:51 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 14:34:44 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,56 +51,56 @@ int	put_good_img_debug(t_data *game, char *line)  //put text debug
 	return (0);
 }
 
-int	push_tile_to_win(t_data *game)
-{
-	int	posx;
-	int	posy;
-	int	index;
-	int		sizepng;
+// int	push_tile_to_win(t_data *game)
+// {
+// 	int	posx;
+// 	int	posy;
+// 	int	index;
+// 	int		sizepng;
 	
-	sizepng = 63;
-	posx = 0;
-	posy = 0;
-	index = 0;
-	while (game->map.tile[index])
-	{
-		if (posx == game->map.lenx)
-			{
-				posx = 0;
-				posy++;
-				game->map.leny++; // dependance ? ou a virer
-			}
-		printf("%d %d %d %d\n", posx, posy,(sizepng * posx)%64, (sizepng * posy)%64);
-		if (game->map.tile[index] != GROUND)
-		{
-			mlx_put_image_to_window(game->mlx, game->windows, 
-				game->wall.img, sizepng * posx, sizepng * posy);
-		}
-		if (game->map.tile[index] != WALL)
-		{
-			mlx_put_image_to_window(game->mlx, game->windows, 
-				game->ground.img, sizepng * posx, sizepng * posy);
-		}
-		if (game->map.tile[index] == ITEM)
-		{
-			mlx_put_image_to_window(game->mlx, game->windows, 
-				game->item.img, sizepng * posx, sizepng * posy);
-		}
-		else if (game->map.tile[index] == DOOR)
-		{
-			mlx_put_image_to_window(game->mlx, game->windows, 
-				game->door.img, sizepng * posx, sizepng * posy);
-		}
-		else if (game->map.tile[index] == PLAYER)
-		{
-			mlx_put_image_to_window(game->mlx, game->windows, 
-				game->player.png.img, sizepng * posx, sizepng * posy);
-		}
-		posx++;
-		index++;
-	}
-	return (0);
-}
+// 	sizepng = 63;
+// 	posx = 0;
+// 	posy = 0;
+// 	index = 0;
+// 	while (game->map.tile[index])
+// 	{
+// 		if (posx == game->map.lenx)
+// 			{
+// 				posx = 0;
+// 				posy++;
+// 				game->map.leny++; // dependance ? ou a virer
+// 			}
+// 		printf("%d %d %d %d\n", posx, posy,(sizepng * posx)%64, (sizepng * posy)%64);
+// 		if (game->map.tile[index] != GROUND)
+// 		{
+// 			mlx_put_image_to_window(game->mlx, game->windows, 
+// 				game->wall.img, sizepng * posx, sizepng * posy);
+// 		}
+// 		if (game->map.tile[index] != WALL)
+// 		{
+// 			mlx_put_image_to_window(game->mlx, game->windows, 
+// 				game->ground.img, sizepng * posx, sizepng * posy);
+// 		}
+// 		if (game->map.tile[index] == ITEM)
+// 		{
+// 			mlx_put_image_to_window(game->mlx, game->windows, 
+// 				game->item.img, sizepng * posx, sizepng * posy);
+// 		}
+// 		else if (game->map.tile[index] == DOOR)
+// 		{
+// 			mlx_put_image_to_window(game->mlx, game->windows, 
+// 				game->door.img, sizepng * posx, sizepng * posy);
+// 		}
+// 		else if (game->map.tile[index] == PLAYER)
+// 		{
+// 			mlx_put_image_to_window(game->mlx, game->windows, 
+// 				game->player.png.img, sizepng * posx, sizepng * posy);
+// 		}
+// 		posx++;
+// 		index++;
+// 	}
+// 	return (0);
+// }
 
 /**
  * @brief fill *tile str with all char map, whitout space or new line

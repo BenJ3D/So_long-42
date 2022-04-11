@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 01:15:03 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 14:49:25 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../libs/gnl/get_next_line.h"
 # include <math.h>
 # include <stdio.h> // FIXME:
-#include <fcntl.h>
+# include <fcntl.h>
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
@@ -97,6 +97,7 @@ typedef struct s_player
 {
 	int		posx;
 	int		posy;
+	int		posi;
 	int		size;
 	t_png	png;
 }				t_player;

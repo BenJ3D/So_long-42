@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/10 23:42:38 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/11 14:35:10 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ PATHMLX = ./libs/mlx
 FS = #-fsanitize=address -g3
 
 PATH_SRCS = ./
-FILES_SRCS =	ini_png parsing error open_file utils 
+FILES_SRCS =	ini_png parsing error open_file utils trace_img_logic
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_SRCS)))
