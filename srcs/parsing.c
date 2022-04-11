@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 14:34:44 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 16:32:28 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,8 +176,8 @@ int	check_wall_close_map(t_data *game)
 	game->map.leny = (int)ft_strlen(game->map.tile) / game->map.lenx;
 	while(game->map.tile[i])
 	{
-		if (((posy == 1) || (posx == 1) || (posy == game->map.leny) || \
-(posx == game->map.lenx)) && game->map.tile[i] != WALL)
+		if (((posy == 1) || (posx == 1) || (posy == game->map.leny) || 
+					(posx == game->map.lenx)) && game->map.tile[i] != WALL)
 		{
 			game->error = ERROR_MAP_WALL;
 			write_error_type(game);

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 14:49:25 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 16:14:39 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../libs/gnl/get_next_line.h"
 # include <math.h>
 # include <stdio.h> // FIXME:
-# include <fcntl.h>
+#include <fcntl.h>
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
@@ -157,6 +157,10 @@ int	ft_str_search_char(char *str, char c);
 
 int	push_tile_to_win(t_data *game);
 
+/******-------------- hook management ---------------******/
+
+int		key_hook(int keycode, t_data *game);
+
 /******------------------ practice function -------*/
 
 int		trace_door(t_data *game);
@@ -165,7 +169,7 @@ int		trace_player(t_data *game);
 int		trace_backgroundold(t_data *img, int color);
 int		trace_background(t_data *game);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		key_hook(int keycode, t_data *img);
+// int		key_hook(int keycode, t_data *img);
 int		mouse_hook(int keycode, t_data *img);
 int		trace_square(t_data *img);
 

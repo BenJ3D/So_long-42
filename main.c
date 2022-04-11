@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 14:33:30 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 15:00:40 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(int ac, char **av)
 	game.addr = mlx_get_data_addr(game.img, &game.bits_per_pixel,
 			&game.line_length, &game.endian);//** fin setup mlx **///
 	push_tile_to_win(&game);
+	///// HOOK
+	mlx_hook(game.windows, X_EVENT_KEY_PRESS, 0, key_hook, &game);
 	mlx_loop (game.mlx);
 	free(game.map.tile);
 	return (0);
