@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/10 23:42:38 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/11 02:27:14 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 
 NAME = so_long
 LIBSL = so_long.a
+NAMEMLX = ./libs/mlx/libmlx42.a
 CC = gcc
 CFLAGS = #-Wall -Wextra -Werror
 AR = ar rcs

@@ -6,14 +6,15 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 01:15:03 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 02:31:53 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../libs/mlx/mlx.h"
+// # include "../libs/mlx/mlx.h"
+# include "../libs/mlx/include/MLX42/MLX42.h"
 # include "../libs/libft/libft.h"
 # include "../libs/gnl/get_next_line.h"
 # include <math.h>
