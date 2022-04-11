@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 13:49:23 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 12:33:46 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 12:55:57 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,6 @@ static void	filename_path(t_data *game)
 	ft_strlcpy(game->door.path, "./srcs/png/door.png", 20);
 	ft_strlcpy(game->player.png.path, "./srcs/png/player.png", 22);
 }
-
-// static void	filename_path(t_data *game)
-// {
-// 	ft_strlcpy(game->ground.path, "./srcs/pngalt/green_concrete_powder.png", 40);
-// 	ft_strlcpy(game->wall.path, "./srcs/pngalt/bricks.png", 25);
-// 	ft_strlcpy(game->item.path, "./srcs/png/item.png", 20);
-// 	ft_strlcpy(game->door.path, "./srcs/png/door.png", 20);
-// 	ft_strlcpy(game->player.png.path, "./srcs/png/player.png", 22);
-// }
 
 static void	filename_path_xpm(t_data *game)
 {

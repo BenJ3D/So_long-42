@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 12:22:39 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 12:52:40 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ int	main(int ac, char **av)
 	t_data	game;
 	int fd;
 	
-	// if (check_norm_arg_is_ok(ac, av[1], &game) == 0)
-	// 	return (write_error_type(&game));
-	//parsing_map(&game);
+	if (check_norm_arg_is_ok(ac, av[1], &game) == 0)
+		return (write_error_type(&game));
 	// game.img_width = LPX;
 	// game.img_height = HPX;
 	game.mlx = mlx_init();
@@ -34,12 +33,12 @@ int	main(int ac, char **av)
 	game.error = NO_ERROR;
 	parsing_map(&game, av[1]);
 	game.map.leny = (ft_strlen(game.map.tile) / game.map.lenx);
-	// game.img_width = game.wall.w * game.map.lenx;
-	// game.img_height = game.wall.h * game.map.leny;
+	game.img_width = (game.wall.w - 1) * game.map.lenx;
+	game.img_height = (game.wall.h - 1) * game.map.leny;
 	//printf("debig leny %d\n", (int)ft_strlen(game.map.tile));
 
-	game.img_width = 640;
-	game.img_height = 640;
+	// game.img_width = 640;
+	// game.img_height = 640;
 
 	
 	////////////
@@ -60,17 +59,17 @@ int	main(int ac, char **av)
 	*/
 	//		fin setup mlx **//
 	
-	int lolx = 0;
-	int loly = 0;
+	// int lolx = 0;
+	// int loly = 0;
 
-	while(loly < 10)
-	{
-		mlx_put_image_to_window(game.mlx, game.windows, game.wall.img, lolx * 64, loly * 64);
-		if (lolx == 9)
-			lolx = 0;
-	}
+	// while(loly < 10)
+	// {
+	// 	mlx_put_image_to_window(game.mlx, game.windows, game.wall.img, lolx * 64, loly * 64);
+	// 	if (lolx == 9)
+	// 		lolx = 0;
+	// }
 	
-	//push_tile_to_win(&game);
+	push_tile_to_win(&game);
 	// mlx_put_image_to_window(game.mlx, game.windows, game.ground.img, 64, 64);
 	// mlx_put_image_to_window(game.mlx, game.windows, game.door.img,
 	// 	game.wall.w, game.wall.h);

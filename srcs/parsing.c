@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 01:58:07 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/11 12:56:51 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	push_tile_to_win(t_data *game)
 	int	index;
 	int		sizepng;
 	
-	sizepng = 64;
+	sizepng = 63;
 	posx = 0;
 	posy = 0;
 	index = 0;
