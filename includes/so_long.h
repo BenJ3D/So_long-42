@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/12 15:32:17 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:41:37 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,13 @@ typedef struct s_tile // trop complex A VIRER TODO:
 	char			c;
 }			t_tile;
 
+typedef struct s_test // trop complex A VIRER TODO:
+{
+	int				x;
+	int				y;
+	char			c;
+	char			c2;
+}			t_test;
 typedef struct s_map
 {
 	char			*tile;
