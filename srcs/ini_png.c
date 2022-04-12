@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 13:49:23 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 12:55:57 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/12 17:56:41 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	define_all_png_to_image(t_data *game)
 			&game->door.w, &game->door.h);
 	game->player.png.img = mlx_png_file_to_image(game->mlx,
 			game->player.png.path, &game->player.png.w, &game->player.png.h);
+	patch_mlx(game);
 }
-
 
 /**
  * @brief save all png file for project in mlx img
@@ -69,5 +69,6 @@ void	define_all_xpm_to_image(t_data *game)
 			&game->door.w, &game->door.h);
 	game->player.png.img = mlx_xpm_file_to_image(game->mlx,
 			game->player.png.path, &game->player.png.w, &game->player.png.h);
+	patch_mlx(game);
 }
 

@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/12 15:04:39 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/12 17:51:52 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ PATHMLX = ./libs/mlx
 FS = #-fsanitize=address -g3
 
 PATH_SRCS = ./
-FILES_SRCS = ini_png parsing error open_file utils trace_img_logic hook_manage
+FILES_SRCS = ini_png parsing error open_file utils trace_img_logic hook_manage patch_mlx
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_SRCS)))
@@ -36,7 +36,7 @@ SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_SRCS)))
 OBJS_DIR = ./srcs/
 OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_SRCS)))
 
-all : ${GNL} ${LIBFT} $(NAME)
+all : $(HEADER) ${GNL} ${LIBFT} $(NAME) 
 
 %.o: %.c $(SRCS) $(HEADER)
 	$(CC) $(CFLAGS) -c -o $@ $(OBJS_DIR)$< 
