@@ -6,14 +6,14 @@
 /*   By: bducrocq <bducrocq@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 14:30:20 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/01/03 16:55:56 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/12 23:31:08 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 int	intlen(long long nb, int i)
-{
+{ 
 	long long	res;
 
 	if (nb < 0)
