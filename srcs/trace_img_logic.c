@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/12 18:01:24 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:38:42 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,15 +114,12 @@ int	push_tile_to_win(t_data *game)
 
 int	trace_player_to_win(t_data *game)
 {
-	int		index;
 	int		sizepng;
 	
 	sizepng = game->sizetile;
 	mlx_put_image_to_window(game->mlx, game->windows,
 		game->player.png.img, sizepng * game->player.posx, 
 		sizepng * game->player.posy);
-	game->player.posx++;
-	index++;
 
 	return (0);
 }
