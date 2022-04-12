@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/12 14:30:49 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/12 16:08:05 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,6 +254,7 @@ int	parsing_map(t_data	*game, char *pathfile)
 		write_error_type(game);
 	if (put_good_img_debug(game, game->map.tile))
 		write_error_type(game);
+//	game->map. ft_strdup(game);
 	return (0);
 }
 
