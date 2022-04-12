@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 15:02:40 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/12 15:31:33 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/12 16:23:56 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	collision_management(t_data *game, int target, int back_target)
 		// 	game->b_door = 1;
 		game->map.tile[game->player.posi] = GROUND;
 		game->map.tile[target] = PLAYER;
-		push_tile_to_win(game);
+		// push_tile_to_win(game);
+		push_windows(game);
 	}
 	else if (game->map.tile[target] == DOOR)
 	{
@@ -33,7 +34,8 @@ int	collision_management(t_data *game, int target, int back_target)
 		{
 			game->map.tile[game->player.posi] = DOOR;
 			game->map.tile[back_target] = PLAYER;
-			push_tile_to_win(game);
+			//push_tile_to_win(game);
+			push_windows(game);
 		}
 
 	}
