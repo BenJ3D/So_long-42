@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/12 17:55:38 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/12 18:01:24 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,6 @@ int	update_windows(t_data *game)
 int	push_windows(t_data *game)
 {
 	push_tile_to_win(game);
-	//trace_player_to_win(game);
+	trace_player_to_win(game);
 	return (0);
 }
