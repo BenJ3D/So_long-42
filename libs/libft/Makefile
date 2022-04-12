@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 09:53:02 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/06 16:52:37 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/12 11:46:52 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ FILES = ft_memset \
 		ft_putstr \
 		ft_putendl_fd \
 		ft_putnbr_fd \
+		ft_putunnbr \
 		ft_putnbr \
 		ft_putchar_fd \
 		ft_putchar \

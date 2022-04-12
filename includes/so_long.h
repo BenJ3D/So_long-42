@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 16:14:39 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:32:17 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../libs/gnl/get_next_line.h"
 # include <math.h>
 # include <stdio.h> // FIXME:
-#include <fcntl.h>
+# include <fcntl.h>
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
@@ -121,6 +121,7 @@ typedef struct s_data
 	t_png			door;
 	t_png			ground;
 	t_png			wall;
+	int				b_door;				
 	int				i_map;
 	t_map			map;
 	enum e_error	error;
@@ -152,10 +153,14 @@ int		check_norm_arg_is_ok(int ac, char *str, t_data *game);
 /******------------------- utils ---------------------******/
 
 int	ft_str_search_char(char *str, char c);
+int	ft_str_search_str(char *str, char *cmp);
+int	ft_strchr_c(const char *s, int c);
 
 /******-------------- image management ---------------******/
 
 int	push_tile_to_win(t_data *game);
+int	push_windows(t_data *game);
+
 
 /******-------------- hook management ---------------******/
 

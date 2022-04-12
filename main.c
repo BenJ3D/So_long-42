@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 15:00:40 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:15:49 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int ac, char **av)
 	if (check_norm_arg_is_ok(ac, av[1], &game) == 0)
 		return (write_error_type(&game));
 	game.mlx = mlx_init();
+	game.b_door = 0;
 	define_all_png_to_image(&game);
 	game.error = NO_ERROR;	//////// START PARSING /////////
 	parsing_map(&game, av[1]);
@@ -30,7 +31,7 @@ int	main(int ac, char **av)
 	game.img = mlx_new_image(game.mlx, game.img_width, game.img_height);
 	game.addr = mlx_get_data_addr(game.img, &game.bits_per_pixel,
 			&game.line_length, &game.endian);//** fin setup mlx **///
-	push_tile_to_win(&game);
+	push_windows(&game);
 	///// HOOK
 	mlx_hook(game.windows, X_EVENT_KEY_PRESS, 0, key_hook, &game);
 	mlx_loop (game.mlx);

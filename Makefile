@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/11 14:55:26 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/12 15:04:39 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = so_long
 LIBSL = so_long.a
-CC = gcc
+CC = cc
 CFLAGS = #-Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
