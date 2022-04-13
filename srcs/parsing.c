@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 16:32:28 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 14:19:30 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,35 @@ int check_minimum_required(t_data *game)
 		game->error = ERROR_MAP_NO_PLAYER;
 	else if (e <= 0)
 		game->error = ERROR_MAP_NO_EXIT;
+	if (game->error != NO_ERROR)
+		write_error_type(game);
+	return (0);
+}
+
+int	check_chars_is_valid(t_data *game)
+{
+	int	i;
+	
+	i = 0;
+	game->error = NO_ERROR;
+	while(game->map.tile[i])
+	{
+		if (WALL == game->map.tile[i])
+			i++;
+		else if (GROUND == game->map.tile[i])
+			i++;
+		else if (PLAYER == game->map.tile[i])
+			i++;
+		else if (ITEM == game->map.tile[i])
+			i++;
+		else if (DOOR == game->map.tile[i])
+			i++;
+		else
+		{
+			game->error = ERROR_MAP_CHAR_NO_VALID;
+			break ;
+		}
+	}
 	if (game->error != NO_ERROR)
 		write_error_type(game);
 	return (0);
