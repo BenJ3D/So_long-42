@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 15:02:40 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 15:27:01 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 15:29:32 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ int	collision_management(t_data *game, int target, int back_target)
 			exit(0);
 		}
 	}
+	return (0);
+}
+int	mouse_hook(int mc, t_data *game)
+{
+	pritnf("mouse input commande : %d\n", mc);
 	return (0);
 }
 
