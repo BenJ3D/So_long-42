@@ -6,11 +6,39 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 13:49:23 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 19:03:49 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:37:34 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+int	check_if_file_exist(t_data *game)
+{
+	int	fd;
+
+	fd = open(game->ground.path, O_RDONLY);
+	if (fd < 0)
+		game->error = ERROR_MISSING_FILE;
+	close (fd);
+	fd = open(game->wall.path, O_RDONLY);
+	if (fd < 0)
+		game->error = ERROR_MISSING_FILE;
+	close (fd);
+	fd = open(game->door.path, O_RDONLY);
+	if (fd < 0)
+		game->error = ERROR_MISSING_FILE;
+	close (fd);
+	fd = open(game->player.png.path, O_RDONLY);
+	if (fd < 0)
+		game->error = ERROR_MISSING_FILE;
+	close (fd);
+	fd = open(game->item.path, O_RDONLY);
+	if (fd < 0)
+		game->error = ERROR_MISSING_FILE;
+	if (game->error != NO_ERROR)
+		write_error_type(game);
+	return (0);
+}
 
 static void	filename_path(t_data *game)
 {
@@ -29,6 +57,7 @@ static void	filename_path(t_data *game)
 void	define_all_png_to_image(t_data *game)
 {
 	filename_path(game);
+	check_if_file_exist(game);
 	game->ground.img = mlx_png_file_to_image(game->mlx, game->ground.path,
 			&game->ground.w, &game->ground.h);
 	game->wall.img = mlx_png_file_to_image(game->mlx, game->wall.path,

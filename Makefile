@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/13 21:09:21 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/13 21:48:14 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIBFTPATH = -C ./libs/libft
 LIBFT = ./libs/libft/libft.a
 GNL = ./libs/gnl/gnl.a
 PATHMLX = ./libs/mlx
-FS = -fsanitize=address -g3
+FS = #-fsanitize=address -g3
 
 PATH_SRCS = ./
 FILES_SRCS = ini_png parsing error open_file utils trace_img_logic \
