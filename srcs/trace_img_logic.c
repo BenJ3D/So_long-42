@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 14:53:31 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 12:29:22 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,17 @@ int	push_tile_to_win(t_data *game)
 				game->map.leny++; // dependance ? ou a virer
 			}
 		if (game->map.tile[index] != GROUND)
-		{
 			mlx_put_image_to_window(game->mlx, game->windows, 
 				game->wall.img, sizepng * posx, sizepng * posy);
-		}
 		if (game->map.tile[index] != WALL)
-		{
 			mlx_put_image_to_window(game->mlx, game->windows, 
 				game->ground.img, sizepng * posx, sizepng * posy);
-		}
 		if (game->map.tile[index] == ITEM)
-		{
 			mlx_put_image_to_window(game->mlx, game->windows, 
 				game->item.img, sizepng * posx, sizepng * posy);
-		}
 		else if (game->map.tile[index] == DOOR)
-		{
 			mlx_put_image_to_window(game->mlx, game->windows, 
 				game->door.img, sizepng * posx, sizepng * posy);
-		}
 		else if (game->map.tile[index] == PLAYER)
 			trace_player_to_win(game, posx, posy, sizepng, index);
 		posx++;
