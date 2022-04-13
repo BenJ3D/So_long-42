@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 15:05:16 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:12:18 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ enum	e_error
 	ERROR_MAP_NO_RECT,
 	ERROR_MAP_CHAR_NO_VALID,
 	ERROR_MAP_NO_PLAYER,
+	ERROR_WARNING_PLAYER,
 	ERROR_MAP_NO_ITEM,
 	ERROR_MAP_NO_EXIT,
 	ERROR_MAP_WALL
@@ -138,6 +139,9 @@ void	define_all_xpm_to_image(t_data *game);
 
 int	parsing_map(t_data	*game, char *pathfile);
 
+int check_minimum_required(t_data *game);
+int	check_wall_close_map(t_data *game, int i);
+int	check_chars_is_valid(t_data *game);
 
 /******-------------- manage open file -------------------******/
 
@@ -150,12 +154,12 @@ int		write_error_type(t_data *game);
 int		check_type_file(char *str, char *filetype);
 int		check_norm_arg_is_ok(int ac, char *str, t_data *game);
 
-
 /******------------------- utils ---------------------******/
 
 int	ft_str_search_char(char *str, char c);
+int	exit_normal(t_data *game);
 
-/******-------------- image management ---------------******/
+/******-------------- image management --------------******/
 
 int	push_tile_to_win(t_data *game);
 
@@ -163,11 +167,11 @@ int	push_tile_to_win(t_data *game);
 
 int		key_hook(int keycode, t_data *game);
 
-/******-------------- mlx path ---------------******/
+/******------------------ mlx path ------------------******/
 
 void	patch_mlx(t_data *game);
 
-/******------------------ practice function -------*/
+/******------------ practice function --------------*******/
 
 int		trace_door(t_data *game);
 int		trace_apple(t_data *game);

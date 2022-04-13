@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 15:31:43 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:46:55 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,8 @@ int	main(int ac, char **av)
 	push_tile_to_win(&game);
 	///// HOOK
 	mlx_hook(game.windows, X_EVENT_KEY_PRESS, 0, key_hook, &game);
-	mlx_mouse_hook(game.windows, mouse_hook, &game);
+	mlx_hook(game.windows, 17, 1L << 0, exit_normal, &game);
 	mlx_loop (game.mlx);
 	free(game.map.tile);
 	return (0);
 }
- 

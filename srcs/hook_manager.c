@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 15:02:40 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 15:29:32 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:53:16 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,9 @@ int	collision_management(t_data *game, int target, int back_target)
 		if (nb_item <= 0)
 		{
 			player_move_counter(game);
-			exit(0);
+			exit_normal(game);
 		}
 	}
-	return (0);
-}
-int	mouse_hook(int mc, t_data *game)
-{
-	pritnf("mouse input commande : %d\n", mc);
 	return (0);
 }
 
@@ -62,7 +57,7 @@ int	key_hook(int kc, t_data *game)
 	else if (kc == touch_a || kc == touch_left)
 		target = game->player.posi - 1;
 	else if (kc == touch_esc)
-		exit(0);
+		exit_normal(game);
 	collision_management(game, target, back_target);
 	return (0);
 }
