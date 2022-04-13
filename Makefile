@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/13 14:47:14 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/13 15:12:41 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ PATHMLX = ./libs/mlx
 FS = #-fsanitize=address -g3
 
 PATH_SRCS = ./
-FILES_SRCS = ini_png parsing error open_file utils trace_img_logic hook_manage patch_mlx
+FILES_SRCS = ini_png parsing error open_file utils trace_img_logic hook_manager patch_mlx
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_SRCS)))
@@ -38,10 +38,10 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_SRCS)))
 
 all : ${GNL} ${LIBFT} $(NAME)
 
-%.o: %.c $(SRCS) $(HEADER)
+%.o: %.c $(HEADER) $(SRCS) 
 	$(CC) $(CFLAGS) -c -o $@ $(OBJS_DIR)$< 
 
-$(NAME): ./main.c libmlx $(HEADER) $(OBJS)
+$(NAME): $(HEADER) ./main.c libmlx  $(OBJS)
 	${CC} ${FS} ${CFLAGS} main.c libmlx.dylib -framework OpenGL -framework AppKit -lz \
 	$(LIBFT) ${GNL} $(OBJS) -o $(NAME)
 

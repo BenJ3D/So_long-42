@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 14:56:03 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 15:25:16 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 	game.mlx = mlx_init();
 	define_all_png_to_image(&game);
 	game.error = NO_ERROR;	//////// START PARSING /////////
+	game.player.countmove = 0;
 	parsing_map(&game, av[1]);
 	game.map.leny = (ft_strlen(game.map.tile) / game.map.lenx);
 	game.img_width = game.sizetile * game.map.lenx;
