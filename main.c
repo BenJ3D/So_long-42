@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 18:50:44 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:32:25 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	t_data	game;
 
 	if (check_norm_arg_is_ok(ac, av[1], &game) == 0)
-		return (write_error_type(&game));
+		write_error_type(&game);
 	game.mlx = mlx_init();
 	define_all_png_to_image(&game);
 	game.error = NO_ERROR;

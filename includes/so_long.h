@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 18:55:59 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 20:07:21 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,16 @@ typedef struct s_map
 	int				lenx;
 	int				leny;
 }			t_map;
+
+typedef struct s_tools
+{
+	int				posx;
+	int				posy;
+	int				x;
+	int				y;
+	int				index;
+}			t_tools;
+
 typedef struct s_png
 {
 	int		w;
@@ -103,6 +113,7 @@ typedef struct s_data
 	t_png			ground;
 	t_png			wall;
 	t_map			map;
+	t_tools			tools;
 	enum e_error	error;
 }				t_data;
 
