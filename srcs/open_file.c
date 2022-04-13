@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 18:20:41 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:41:40 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_open_file(char *path, t_data *game)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		game->error = ERROR_FILE_NOT_EXIST;
+		game->error = ERROR_MAP_NOT_EXIST;
 		write_error_type(game);
 	}
 	return (fd);

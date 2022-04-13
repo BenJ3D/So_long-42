@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 22:39:41 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:41:59 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	write_error_type(t_data *game)
 		ft_putstr("Error\nPlease enter one path argument.\n");
 	else if (game->error == ERROR_FILE_TYPE)
 		ft_putstr("Error\nFile is not .ber extension.\n");
-	else if (game->error == ERROR_FILE_NOT_EXIST)
-		ft_putstr("Error\nThe file does not exist or is corrupted.\n");
+	else if (game->error == ERROR_MAP_NOT_EXIST)
+		ft_putstr("Error\nThe map file does not exist or is corrupted.\n");
 	else if (game->error == ERROR_MISSING_FILE)
 		ft_putstr("Error\nPlease check that all required png files are present in \
 ./srcs/png :\ndoor.png\nground.png\nitem.png\nplayer.png\nwall.png\n");

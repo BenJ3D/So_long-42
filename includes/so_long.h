@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 22:22:54 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:41:40 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ enum	e_error
 	NO_ERROR,
 	ERROR_ARG_NBR,
 	ERROR_FILE_TYPE,
-	ERROR_FILE_NOT_EXIST,
+	ERROR_MAP_NOT_EXIST,
 	ERROR_MISSING_FILE,
 	ERROR_MAP_NO_RECT,
 	ERROR_MAP_CHAR_NO_VALID,
