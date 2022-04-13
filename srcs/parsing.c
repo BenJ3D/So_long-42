@@ -6,50 +6,50 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 14:33:21 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 15:04:24 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	put_good_img_debug(t_data *game, char *line)  //put text debug
-{
-	int	i;
+// int	put_good_img_debug(t_data *game, char *line)  //put text debug
+// {
+// 	int	i;
 
-	i = 0;
-	while (*line)
-	{
-		if (i == game->map.lenx)
-			{
-				printf(" |||||\n");
-				i = 0;
-				game->map.leny++;
-			}
-		if (*line == WALL)
-		{
-			printf("  wall  ");
-		}
-		else if (*line == GROUND)
-		{
-			printf(" ground ");
-		}
-		else if (*line == ITEM)
-		{
-			printf("  ITEM  ");
-		}
-		else if (*line == DOOR)
-		{
-			printf("  EXIT  ");
-		}
-		else if (*line == PLAYER)
-		{
-			printf(" PLAYER ");
-		}
-		i++;
-		line++;
-	}
-	return (0);
-}
+// 	i = 0;
+// 	while (*line)
+// 	{
+// 		if (i == game->map.lenx)
+// 			{
+// 				printf(" |||||\n");
+// 				i = 0;
+// 				game->map.leny++;
+// 			}
+// 		if (*line == WALL)
+// 		{
+// 			printf("  wall  ");
+// 		}
+// 		else if (*line == GROUND)
+// 		{
+// 			printf(" ground ");
+// 		}
+// 		else if (*line == ITEM)
+// 		{
+// 			printf("  ITEM  ");
+// 		}
+// 		else if (*line == DOOR)
+// 		{
+// 			printf("  EXIT  ");
+// 		}
+// 		else if (*line == PLAYER)
+// 		{
+// 			printf(" PLAYER ");
+// 		}
+// 		i++;
+// 		line++;
+// 	}
+// 	return (0);
+// }
 
 // int	push_tile_to_win(t_data *game)
 // {

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 15:00:40 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 14:56:03 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	main(int ac, char **av)
 	game.error = NO_ERROR;	//////// START PARSING /////////
 	parsing_map(&game, av[1]);
 	game.map.leny = (ft_strlen(game.map.tile) / game.map.lenx);
-	game.img_width = (game.wall.w - 1) * game.map.lenx;
-	game.img_height = (game.wall.h - 1) * game.map.leny;
+	game.img_width = game.sizetile * game.map.lenx;
+	game.img_height = game.sizetile * game.map.leny;
 	game.windows = mlx_new_window(game.mlx, game.img_width,
 			game.img_height, "so_long");	//** setup mlx **///
 	game.img = mlx_new_image(game.mlx, game.img_width, game.img_height);

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/11 16:14:39 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 15:05:16 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct s_player
 	int		posy;
 	int		posi;
 	int		size;
+	int		countmove;
 	t_png	png;
 }				t_player;
 typedef struct s_data
@@ -117,6 +118,7 @@ typedef struct s_data
 	char			*line;
 	int				endian;
 	t_player		player;
+	int				sizetile;
 	t_png			item;
 	t_png			door;
 	t_png			ground;
@@ -160,6 +162,10 @@ int	push_tile_to_win(t_data *game);
 /******-------------- hook management ---------------******/
 
 int		key_hook(int keycode, t_data *game);
+
+/******-------------- mlx path ---------------******/
+
+void	patch_mlx(t_data *game);
 
 /******------------------ practice function -------*/
 

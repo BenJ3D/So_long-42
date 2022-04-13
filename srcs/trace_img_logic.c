@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 12:29:22 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 14:50:43 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	push_tile_to_win(t_data *game)
 	int		index;
 	int		sizepng;
 	
-	sizepng = game->wall.h - 1; // PATH LINE MLX BUG
+	sizepng = game->sizetile;
 	posx = 0;
 	posy = 0;
 	index = 0;
