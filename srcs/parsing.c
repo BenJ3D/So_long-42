@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 14:32:40 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 14:33:21 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,13 +248,15 @@ int	parsing_map(t_data	*game, char *pathfile)
 		if (!game->line)
 			break;
 	}
+	if (check_chars_is_valid(game))
+		write_error_type(game);
 	if (check_minimum_required(game))
 		write_error_type(game);
 	if (check_wall_close_map(game))
 		write_error_type(game);
-	if (put_good_img_debug(game, game->map.tile))
-		write_error_type(game);
-	printf("\nlenx = %d\nleny = %d\n", game->map.lenx, game->map.leny);
+	// if (put_good_img_debug(game, game->map.tile))
+	// 	write_error_type(game);
+	// printf("\nlenx = %d\nleny = %d\n", game->map.lenx, game->map.leny);
 	return (0);
 }
 
