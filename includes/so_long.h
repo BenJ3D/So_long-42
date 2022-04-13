@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 17:47:41 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:29:29 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../libs/gnl/get_next_line.h"
 # include <math.h>
 # include <stdio.h> // FIXME:
-#include <fcntl.h>
+# include <fcntl.h>
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
@@ -46,7 +46,7 @@ enum	e_error
 enum	e_type_obj
 {
 	WALL='1',
-	GROUND='0', 
+	GROUND='0',
 	ITEM='C',
 	DOOR='E',
 	PLAYER='P'
@@ -130,7 +130,6 @@ typedef struct s_data
 	enum e_error	error;
 }				t_data;
 
-
 /******----------------- intialise img ----------------------******/
 
 void	define_all_png_to_image(t_data *game);
@@ -138,11 +137,11 @@ void	define_all_xpm_to_image(t_data *game);
 
 /******------------------ parsing ------------------------******/
 
-int	parsing_map(t_data	*game, char *pathfile);
+int		parsing_map(t_data	*game, char *pathfile);
 
-int check_minimum_required(t_data *game);
-int	check_wall_close_map(t_data *game, int i);
-int	check_chars_is_valid(t_data *game);
+int		check_minimum_required(t_data *game);
+int		check_wall_close_map(t_data *game, int i);
+int		check_chars_is_valid(t_data *game);
 
 /******-------------- manage open file -------------------******/
 
@@ -157,12 +156,12 @@ int		check_norm_arg_is_ok(int ac, char *str, t_data *game);
 
 /******------------------- utils ---------------------******/
 
-int	ft_str_search_char(char *str, char c);
-int	exit_normal(t_data *game);
+int		ft_str_search_char(char *str, char c);
+int		exit_normal(t_data *game);
 
 /******-------------- image management --------------******/
 
-int	push_tile_to_win(t_data *game);
+int		push_tile_to_win(t_data *game);
 
 /******-------------- hook management ---------------******/
 
@@ -171,17 +170,5 @@ int		key_hook(int keycode, t_data *game);
 /******------------------ mlx path ------------------******/
 
 void	patch_mlx(t_data *game);
-
-/******------------ practice function --------------*******/
-
-int		trace_door(t_data *game);
-int		trace_apple(t_data *game);
-int		trace_player(t_data *game);
-int		trace_backgroundold(t_data *img, int color);
-int		trace_background(t_data *game);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-// int		key_hook(int keycode, t_data *img);
-int		mouse_hook(int keycode, t_data *img);
-int		trace_square(t_data *img);
 
 #endif
