@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 18:29:29 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:38:13 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
-# define X_EVENT_KEY_EXIT		17 //exit key code
-# define SIZE_PNG				64
+# define X_EVENT_KEY_EXIT		17
 
 /****------------ enum ------------****/
 enum	e_error
@@ -32,8 +31,6 @@ enum	e_error
 	ERROR_ARG_NBR,
 	ERROR_FILE_TYPE,
 	ERROR_FILE_NOT_EXIST,
-	ERROR_FILE_NO_NAME, //FIXME: accepter les ".ber" ?
-	ERROR_MAP,
 	ERROR_MAP_NO_RECT,
 	ERROR_MAP_CHAR_NO_VALID,
 	ERROR_MAP_NO_PLAYER,
@@ -66,18 +63,6 @@ enum	e_key
 };
 
 /****----------- struct -----------****/
-typedef struct s_clist
-{
-	char			*content;
-	struct s_clist	*next;
-}					t_clist;
-typedef struct s_tile // trop complex A VIRER TODO:
-{
-	int				x;
-	int				y;
-	char			c;
-}			t_tile;
-
 typedef struct s_map
 {
 	char			*tile;
