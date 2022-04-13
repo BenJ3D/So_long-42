@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 17:12:18 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:47:41 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_map
 	int				lenx;
 	int				lenx_less1;
 	int				leny;
+	int				isend;
 }			t_map;
 typedef struct s_png
 {

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 17:42:39 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 17:58:35 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int	fill_data_map(t_data *game, int fd)
 {
 	static int		lentmp = 0;
 	char			*tmp;
-	
+
 	game->line = get_next_line(fd);
 	if (!game->line)
 		return (0);
 	game->map.lenx = ft_strlen(game->line);
-	if(game->line[game->map.lenx - 1] == '\n')
+	if (game->line[game->map.lenx - 1] == '\n')
 	{
 		game->line[game->map.lenx - 1] = '\0';
 		game->map.lenx--;
@@ -38,7 +38,7 @@ int	fill_data_map(t_data *game, int fd)
 		game->error = ERROR_MAP_NO_RECT;
 		write_error_type(game);
 	}
-	lentmp = game->map.lenx;  //save pour compare le prochain tour
+	lentmp = game->map.lenx;
 	tmp = ft_strdup(game->map.tile);
 	free(game->map.tile);
 	game->map.tile = ft_strjoin(tmp, game->line);
@@ -60,17 +60,17 @@ int	parsing_map(t_data	*game, char *pathfile)
 {
 	int		fd;
 	char	line;
-	
+
 	game->map.bool = 0;
 	fd = ft_open_file(pathfile, game);
 	game->map.tile = ft_strdup("");
 	game->map.leny = 1;
 	while (1)
 	{
-		if(fill_data_map(game, fd))
+		if (fill_data_map(game, fd))
 			write_error_type(game);
-		if (!game->line)
-			break;
+		if (game->line == NULL)
+			break ;
 	}
 	if (check_chars_is_valid(game) && game->line)
 		write_error_type(game);

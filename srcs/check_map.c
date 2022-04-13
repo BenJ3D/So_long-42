@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 17:40:12 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:01:49 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	save_only_first_position(t_data *game, int counter)
 {
 	int	lenmap;
 	int	i;
-	
+
 	i = 1;
 	lenmap = ft_strlen(game->map.tile) - 1;
-	while(lenmap > 0 && counter > i)
+	while (lenmap > 0 && counter > i)
 	{
 		if (game->map.tile[lenmap] == PLAYER)
 		{
@@ -27,7 +27,6 @@ int	save_only_first_position(t_data *game, int counter)
 			i++;
 		}
 		lenmap--;
-		printf("game map line : %s counter : %d  i : %d\n", game->map.tile, counter, i);
 	}
 	return (0);
 }
@@ -38,12 +37,12 @@ int	save_only_first_position(t_data *game, int counter)
  * @param game 
  * @return int 
  */
-int check_minimum_required(t_data *game)
+int	check_minimum_required(t_data *game)
 {
 	int	c;
 	int	e;
 	int	p;
-	int i;
+	int	i;
 
 	c = ft_str_search_char(game->map.tile, ITEM);
 	e = ft_str_search_char(game->map.tile, DOOR);
@@ -72,9 +71,9 @@ int	check_wall_close_map(t_data *game, int i)
 	posx = 1;
 	posy = 1;
 	game->map.leny = (int)ft_strlen(game->map.tile) / game->map.lenx;
-	while(game->map.tile[i])
+	while (game->map.tile[i])
 	{
-		if (((posy == 1) || (posx == 1) || (posy == game->map.leny) || 
+		if (((posy == 1) || (posx == 1) || (posy == game->map.leny) || \
 					(posx == game->map.lenx)) && game->map.tile[i] != WALL)
 		{
 			game->error = ERROR_MAP_WALL;
@@ -95,10 +94,10 @@ int	check_wall_close_map(t_data *game, int i)
 int	check_chars_is_valid(t_data *game)
 {
 	int	i;
-	
+
 	i = 0;
 	game->error = NO_ERROR;
-	while(game->map.tile[i])
+	while (game->map.tile[i])
 	{
 		if (WALL == game->map.tile[i])
 			i++;

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 16:53:34 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:20:23 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	write_error_map(t_data *game)
 {
-		if (game->error == ERROR_MAP_CHAR_NO_VALID)
+	if (game->error == ERROR_MAP_CHAR_NO_VALID)
 		ft_putstr("Error\nUnknown character detected,\
  are allowed:\n1 : Wall\n0 : Empty location\nC : Collectible\nE\
  : Exit\nP : Position player.");
@@ -46,7 +46,7 @@ int	write_error_type(t_data *game)
 	if (game->error == ERROR_WARNING_PLAYER)
 	{
 		ft_putstr("WARNING\nSeveral 'P' have been detected, \
-only the first one will be used.\n");
+only one will be used.\n");
 		game->error = NO_ERROR;
 	}
 	if (game->error != NO_ERROR)
@@ -72,7 +72,7 @@ int	check_type_file(char *str, char *filetype)
 		i--;
 	while (y >= 0)
 	{
-		if (filetype[y] != str[i]) 
+		if (filetype[y] != str[i])
 			return (1);
 		i--;
 		y--;

@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 15:02:40 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 16:53:16 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:19:39 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	player_move_counter(t_data *game)
 int	collision_management(t_data *game, int target, int back_target)
 {
 	int	nb_item;
-	
+
 	nb_item = ft_str_search_char(game->map.tile, ITEM);
 	if (game->map.tile[target] != WALL && game->map.tile[target] != DOOR)
 	{

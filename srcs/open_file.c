@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/10 19:58:09 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:20:41 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_open_file(char *path, t_data *game)
 {
 	int	fd;
-	
+
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
