@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 18:01:49 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:59:04 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	check_minimum_required(t_data *game)
 	int	c;
 	int	e;
 	int	p;
-	int	i;
 
 	c = ft_str_search_char(game->map.tile, ITEM);
 	e = ft_str_search_char(game->map.tile, DOOR);

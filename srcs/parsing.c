@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 17:58:35 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:56:25 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	fill_data_map(t_data *game, int fd)
 int	parsing_map(t_data	*game, char *pathfile)
 {
 	int		fd;
-	char	line;
 
 	game->map.bool = 0;
 	fd = ft_open_file(pathfile, game);

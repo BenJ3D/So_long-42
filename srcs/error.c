@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 18:20:23 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:56:56 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,6 @@ int	check_type_file(char *str, char *filetype)
 
 int	check_norm_arg_is_ok(int ac, char *str, t_data *game)
 {
-	int	len;
-
 	if (ac != 2 || str[0] == '\0')
 		game->error = ERROR_ARG_NBR;
 	else if (check_type_file(str, ".ber"))

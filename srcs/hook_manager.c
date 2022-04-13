@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 15:02:40 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 18:19:39 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:58:02 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	player_move_counter(t_data *game)
 	ft_putchar('\n');
 }
 
-int	collision_management(t_data *game, int target, int back_target)
+int	collision_management(t_data *game, int target)
 {
 	int	nb_item;
 
@@ -45,9 +45,8 @@ int	collision_management(t_data *game, int target, int back_target)
 int	key_hook(int kc, t_data *game)
 {
 	int	target;
-	int	back_target;
 
-	back_target = -target;
+	target = 0;
 	if (kc == touch_w || kc == touch_up)
 		target = game->player.posi - game->map.lenx;
 	else if (kc == touch_s || kc == touch_down)
@@ -58,6 +57,6 @@ int	key_hook(int kc, t_data *game)
 		target = game->player.posi - 1;
 	else if (kc == touch_esc)
 		exit_normal(game);
-	collision_management(game, target, back_target);
+	collision_management(game, target);
 	return (0);
 }

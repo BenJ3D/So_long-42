@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 18:38:13 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 18:55:59 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,9 @@ enum	e_key
 typedef struct s_map
 {
 	char			*tile;
-	int				i;
 	int				bool;
 	int				lenx;
-	int				lenx_less1;
 	int				leny;
-	int				isend;
 }			t_map;
 typedef struct s_png
 {
@@ -85,21 +82,16 @@ typedef struct s_player
 	int		posx;
 	int		posy;
 	int		posi;
-	int		size;
 	int		countmove;
 	t_png	png;
 }				t_player;
 typedef struct s_data
 {
-	void			*arg;
 	void			*mlx;
 	void			*windows;
-	int				size_winx;
-	int				size_winy;
 	void			*img;
 	int				img_width;
 	int				img_height;
-	char			*addr;
 	int				bits_per_pixel;
 	int				line_length;
 	char			*line;
@@ -110,7 +102,6 @@ typedef struct s_data
 	t_png			door;
 	t_png			ground;
 	t_png			wall;
-	int				i_map;
 	t_map			map;
 	enum e_error	error;
 }				t_data;
@@ -118,7 +109,6 @@ typedef struct s_data
 /******----------------- intialise img ----------------------******/
 
 void	define_all_png_to_image(t_data *game);
-void	define_all_xpm_to_image(t_data *game);
 
 /******------------------ parsing ------------------------******/
 

@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/13 16:37:42 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/13 19:04:59 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME = so_long
 LIBSL = so_long.a
 CC = gcc
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 HEADER = ./includes/so_long.h
@@ -25,7 +25,7 @@ LIBFTPATH = -C ./libs/libft
 LIBFT = ./libs/libft/libft.a
 GNL = ./libs/gnl/gnl.a
 PATHMLX = ./libs/mlx
-FS = #-fsanitize=address -g3
+FS = -fsanitize=address -g3
 
 PATH_SRCS = ./
 FILES_SRCS = ini_png parsing error open_file utils trace_img_logic \
@@ -74,7 +74,7 @@ fclean: clean
 	rm -d -rf .vscode so_long*
 
 re: fclean all
-#srcs/main.c libmlx.dylib -framework OpenGL -framework AppKit -lz -o $(NAME)
+
 git:
 	git add .
 	git commit -m "$m"
