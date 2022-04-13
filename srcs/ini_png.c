@@ -6,13 +6,13 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 13:49:23 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 22:37:34 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/13 22:54:54 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	check_if_file_exist(t_data *game)
+void	check_if_file_exist(t_data *game)
 {
 	int	fd;
 
@@ -37,7 +37,6 @@ int	check_if_file_exist(t_data *game)
 		game->error = ERROR_MISSING_FILE;
 	if (game->error != NO_ERROR)
 		write_error_type(game);
-	return (0);
 }
 
 static void	filename_path(t_data *game)
@@ -56,6 +55,7 @@ static void	filename_path(t_data *game)
  */
 void	define_all_png_to_image(t_data *game)
 {
+	game->error = NO_ERROR;
 	filename_path(game);
 	check_if_file_exist(game);
 	game->ground.img = mlx_png_file_to_image(game->mlx, game->ground.path,
