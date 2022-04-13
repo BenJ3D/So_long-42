@@ -6,11 +6,11 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/13 19:35:57 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/13 21:09:21 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#FIXME: Attention relink sur le cp de la dylib
+#FIXME: Attention relink sur le cp de la dylib 
 
 NAME = so_long
 LIBSL = so_long.a
