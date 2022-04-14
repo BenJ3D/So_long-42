@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/04/14 23:01:16 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/14 23:04:45 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,11 @@ SRC_PATH = ./srcs/
 OBJ_PATH = ./objs/
 
 CPPFLAGS = -I./includes/
+
+LIBFT_PATH = ./libs/libft/
+
+GNL_PATH = ./libs/gnl/
+
 
 # Name
 
@@ -100,7 +105,10 @@ re: fclean all
 
 norme:
 	norminette $(SRC)
-	norminette $(INC_PATH)*.h
+	norminette ./includes/*.h
+	norminette $(GNL_PATH)*.c 
+	norminette $(LIBFT_PATH)*.c
+
 
 git:
 	git add .
