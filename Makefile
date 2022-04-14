@@ -5,79 +5,106 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/21 00:44:59 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/13 21:48:14 by bducrocq         ###   ########.fr        #
+#    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
+#    Updated: 2022/04/14 23:01:16 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#FIXME: Attention relink sur le cp de la dylib 
+# Binary
 
 NAME = so_long
-LIBSL = so_long.a
-CC = gcc
+
+# Path
+
+SRC_PATH = ./srcs/
+
+OBJ_PATH = ./objs/
+
+CPPFLAGS = -I./includes/
+
+# Name
+
+SRC_NAME =	ini_png.c           \
+			parsing.c			\
+			error.c				\
+			open_file.c			\
+			utils.c				\
+			trace_img_logic.c	\
+			hook_manager.c		\
+			patch_mlx.c			\
+			check_map.c
+
+OBJ_NAME = $(SRC_NAME:.c=.o)
+
+# Files
+
+SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
+
+OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
+
+MAIN = main.c
+
+# Flags
+
+LDFLAGS = -L./libs/libft/
+GNLFLAGS = -L./libs/gnl/
+
+LFT = -lft
+GNLFT = ./libs/gnl/gnl.a
+
+CC = gcc $(CFLAGS)
+
 CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
-RM = rm -f
-HEADER = ./includes/so_long.h
-HEADER = ./includes/so_long.h
-HEADER_MLX = ./libs/mlx/mlx.h
-LIBFTPATH = -C ./libs/libft
-LIBFT = ./libs/libft/libft.a
-GNL = ./libs/gnl/gnl.a
-PATHMLX = ./libs/mlx
-FS = #-fsanitize=address -g3
 
-PATH_SRCS = ./
-FILES_SRCS = ini_png parsing error open_file utils trace_img_logic \
-				hook_manager patch_mlx check_map
+MLX =  -L./libs/mlx/ -lmlx -framework OpenGL -framework AppKit -lz 
 
-SRCS_DIR = ./
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_SRCS)))
+# Rules
 
-OBJS_DIR = ./srcs/
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_SRCS)))
+all: $(NAME) 
 
-all : ${GNL} ${LIBFT} $(NAME)
+$(NAME): main.c $(LIBFT) $(OBJ) 
+	@make -C./libs/libft/
+	@make -C./libs/gnl/
+	@make -C./libs/mlx/
+	@cp ./libs/mlx/libmlx.dylib ./libmlx.dylib
+	@echo "\033[34mCreation of $(NAME) ...\033[0m"
+	@$(CC) $(MAIN) $(LDFLAGS) $(LFT) $(GNLFLAGS) $(GNLFT) $(OBJ) -o $@ $(MLX)
+	@echo "\033[32m$(NAME) created\n\033[0m"
 
-%.o: %.c $(HEADER) $(SRCS) 
-	$(CC) $(CFLAGS) -c -o $@ $(OBJS_DIR)$< 
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@mkdir $(OBJ_PATH) 2> /dev/null || true
+	@$(CC) $(CPPFLAGS) -o $@ -c $<
 
-$(NAME): $(HEADER) ./main.c libmlx  $(OBJS)
-	${CC} ${FS} ${CFLAGS} main.c libmlx.dylib -framework OpenGL -framework AppKit -lz \
-	$(LIBFT) ${GNL} $(OBJS) -o $(NAME)
-
-libmlx: $(HEADER_MLX)
-	make -C $(PATHMLX)
-	cp $(PATHMLX)/libmlx.dylib libmlx.dylib
-
-${LIBFT}: 
-	make -C ./libs/libft
-	make bonus -C ./libs/libft
+$(LIBFT):
+	@make -C./libs/libft/
 
 ${GNL}:
-	make -C ./libs/gnl
-
-parsing: ${OBJS} ${GNL} ${LIBFT} $(HEADER)
-	${CC} ${FS} ${CFLAGS} libmlx.dylib -framework OpenGL -framework AppKit -lz \
-	$(LIBFT) ${GNL} $(OBJS)
+	@make -C ./libs/gnl
 
 clean:
-	${MAKE} clean $(LIBFTPATH)
-	${MAKE} clean -C $(PATHMLX)
-	${MAKE} clean -C ./libs/gnl
-	rm -rf $(OBJS)
+	@make clean -C ./libs/libft/
+	@make clean -C./libs/gnl/
+	@make clean -C./libs/mlx/
+	@echo "\033[33mRemoval of .o files of $(NAME) ...\033[0m"
+	@rm -f $(OBJ)
+	@rmdir $(OBJ_PATH) 2> /dev/null || true
+	@echo "\033[31mFiles .o deleted\n\033[0m"
 
 fclean: clean
-	${MAKE} fclean $(LIBFTPATH)
-	${MAKE} fclean -C ./libs/gnl
-	$(RM) $(NAME) libmlx.dylib
-	rm -d -rf .vscode so_long*
+	@make fclean -C ./libs/libft/
+	@echo "\033[33mRemoval of $(NAME)...\033[0m"
+	@rm -f $(NAME) ./libmlx.dylib
+	@echo "\033[31mBinary $(NAME) deleted\n\033[0m"
 
 re: fclean all
+
+norme:
+	norminette $(SRC)
+	norminette $(INC_PATH)*.h
 
 git:
 	git add .
 	git commit -m "$m"
 	git push
 
-.PHONY: all clean fclean re
+.PHONY: all, clean, fclean, re
