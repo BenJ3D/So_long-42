@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/04/18 15:02:48 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/18 16:55:21 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,11 @@ SRC_PATH = ./srcs/
 
 OBJ_PATH = ./objs/
 
-CPPFLAGS = -I./includes/
+WFLAGS = -I./includes/
 
-LIBFT_PATH = ./libs/libft/
+LIBFT_PATH	= ./libs/libft/libft.a
 
-GNL_PATH = ./libs/gnl/
+GNL_PATH = ./libs/gnl/gnl.a
 
 
 # Name
@@ -51,40 +51,36 @@ MAIN = main.c
 
 # Flags
 
-LDFLAGS = -L./libs/libft/
-GNLFLAGS = -L./libs/gnl/
-
-LFT = -lft
-GNLFT = ./libs/gnl/gnl.a
-
 CC = gcc $(CFLAGS)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
+
+FS =# -fsanitize=address -g3
 
 MLX =  -L./libs/mlx/ -lmlx -framework OpenGL -framework AppKit -lz 
 
 # Rules
 
-all: $(NAME) 
+all: gnl lib mlx $(NAME) 
 
-$(NAME): main.c $(LIBFT) $(OBJ) ./libs/libft/*.c
-	@make -C./libs/libft/
-	@make -C./libs/gnl/
-	@make -C./libs/mlx/  
-	@cp ./libs/mlx/libmlx.dylib ./libmlx.dylib
+$(NAME): main.c $(LIBFT) $(OBJ)
 	@echo "\033[34mCreation of $(NAME) ...\033[0m"
-	@$(CC) $(MAIN) $(LDFLAGS) $(LFT) $(GNLFLAGS) $(GNLFT) $(OBJ) -o $@ $(MLX)
+	@$(CC) $(FS) $(MAIN) $(LIBFT_PATH) $(GNL_PATH) $(OBJ) -o $@ $(MLX)
 	@echo "\033[32m$(NAME) created\n\033[0m"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	@$(CC) $(CPPFLAGS) -o $@ -c $<
+	@$(CC) $(WFLAGS) -o $@ -c $<
 
-$(LIBFT):
+lib: ./libs/libft/Makefile
 	@make -C./libs/libft/
 
-${GNL}:
+gnl: ./libs/gnl/Makefile
 	@make -C ./libs/gnl
+
+mlx: ./libs/mlx/Makefile
+	@make -C./libs/mlx/
+	@cp ./libs/mlx/libmlx.dylib ./libmlx.dylib
 
 clean:
 	@make clean -C ./libs/libft/
@@ -92,7 +88,7 @@ clean:
 	@make clean -C./libs/mlx/
 	@echo "\033[33mRemoval of .o files of $(NAME) ...\033[0m"
 	@rm -f $(OBJ)
-	@rmdir $(OBJ_PATH) 2> /dev/null || true
+	@rmdir $(OBJ_PATH) 
 	@echo "\033[31mFiles .o deleted\n\033[0m"
 
 fclean: clean

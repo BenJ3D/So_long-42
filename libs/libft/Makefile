@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 09:53:02 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/13 21:02:55 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/18 16:59:59 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,16 @@ FILES = ft_memset \
 		ft_intlen \
 		ft_putunnbr \
 		ft_putunnbr_fd \
-		ft_isspace
+		ft_isspace \
+		ft_lstnew \
+		ft_lstadd_front \
+		ft_lstsize \
+		ft_lstlast \
+		ft_lstadd_back \
+		ft_lstdelone \
+		ft_lstclear \
+		ft_lstiter \
+		ft_lstmap
 
 FILES_B = 	ft_lstnew \
 	  		ft_lstadd_front \
