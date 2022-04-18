@@ -6,21 +6,25 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/04/18 17:13:21 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/18 18:50:22 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Binary
 
 NAME = so_long
+NAME_BONUS = ./bonus/so_long_bonus
 
 # Path
 
 SRC_PATH = ./srcs/
+SRC_PATH_BONUS = ./bonus/srcs/
 
 OBJ_PATH = ./objs/
+OBJ_PATH_BONUS = ./bonus/objs/
 
 WFLAGS = -I./includes/
+WFLAGSBONUS = -I./bonus/includes/
 
 LIBFT_PATH	= ./libs/libft/libft.a
 
@@ -29,7 +33,7 @@ GNL_PATH = ./libs/gnl/gnl.a
 
 # Name
 
-SRC_NAME =	ini_png.c           \
+SRC_NAME =	ini_png.c			\
 			parsing.c			\
 			error.c				\
 			open_file.c			\
@@ -37,9 +41,22 @@ SRC_NAME =	ini_png.c           \
 			trace_img_logic.c	\
 			hook_manager.c		\
 			patch_mlx.c			\
-			check_map.c
+			check_map.c			\
+			main.c
+
+SRC_BONUS =	ini_png_bonus.c			\
+			parsing_bonus.c			\
+			error_bonus.c				\
+			open_file_bonus.c			\
+			utils_bonus.c				\
+			trace_img_logic_bonus.c	\
+			hook_manager_bonus.c		\
+			patch_mlx_bonus.c			\
+			check_map_bonus.c			\
+			main_bonus.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
+OBJ_NAME_BONUS = $(SRC_BONUS:.c=.o)
 
 # Files
 
@@ -47,7 +64,11 @@ SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
+OBJ_BONUS = $(addprefix $(OBJ_PATH_BONUS), $(OBJ_NAME_BONUS))
+
 MAIN = main.c
+
+MAIN_BONUS = ./bonus/main.c
 
 # Flags
 
@@ -57,20 +78,24 @@ CFLAGS = -Wall -Wextra -Werror
 
 FS =# -fsanitize=address -g3
 
-MLX =  -L./libs/mlx/ -lmlx -framework OpenGL -framework AppKit -lz 
+MLX = -L./libs/mlx/ -lmlx -framework OpenGL -framework AppKit -lz 
 
 # Rules
 
 all: gnl lib mlx $(NAME) 
 
-$(NAME): main.c $(LIBFT) $(OBJ)
+$(NAME): $(LIBFT) $(OBJ)
 	@echo "\033[34mCreation of $(NAME) ...\033[0m"
-	@$(CC) $(FS) $(MAIN) $(LIBFT_PATH) $(GNL_PATH) $(OBJ) -o $@ $(MLX)
+	@$(CC) $(FS) $(LIBFT_PATH) $(GNL_PATH) $(OBJ) -o $@ $(MLX)
 	@echo "\033[32m$(NAME) created\n\033[0m"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	@$(CC) $(WFLAGS) -o $@ -c $<
+
+$(OBJ_PATH_BONUS)%.o: $(SRC_PATH_BONUS)%.c
+	@mkdir $(OBJ_PATH_BONUS) 2> /dev/null || true
+	@$(CC) $(WFLAGSBONUS) -o $@ -c $<
 
 lib: ./libs/libft/Makefile
 	@make -C./libs/libft/
@@ -82,19 +107,27 @@ mlx: ./libs/mlx/Makefile
 	@make -C./libs/mlx/
 	@cp ./libs/mlx/libmlx.dylib ./libmlx.dylib
 
+bonus: gnl lib mlx $(OBJ_BONUS)
+	@echo "\033[34mCreation of $(NAME_BONUS) bonus ...\033[0m"
+	@$(CC) $(FS) $(LIBFT_PATH) $(GNL_PATH) $(OBJ_BONUS) -o $(NAME_BONUS) $(MLX)
+	@cp ./libs/mlx/libmlx.dylib ./bonus/libmlx.dylib
+	@echo "\033[32m$(NAME_BONUS) created\n\033[0m"
+
 clean:
 	@make clean -C ./libs/libft/
 	@make clean -C./libs/gnl/
 	@make clean -C./libs/mlx/
 	@echo "\033[33mRemoval of .o files of $(NAME) ...\033[0m"
 	@rm -f $(OBJ)
+#	@rm -f $(OBJ_BONUS)
 	@rmdir $(OBJ_PATH) 
+# @rmdir $(OBJ_PATH_BONUS) 
 	@echo "\033[31mFiles .o deleted\n\033[0m"
 
 fclean: clean
 	@make fclean -C ./libs/libft/
 	@echo "\033[33mRemoval of $(NAME)...\033[0m"
-	@rm -f $(NAME) ./libmlx.dylib
+	@rm -f $(NAME) ./libmlx.dylib ./bonus/libmlx.dylib
 	@echo "\033[31mBinary $(NAME) deleted\n\033[0m"
 
 re: fclean all
