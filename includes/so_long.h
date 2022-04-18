@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 22:41:40 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/14 23:36:45 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../libs/libft/libft.h"
 # include "../libs/gnl/get_next_line.h"
 # include <math.h>
-# include <stdio.h> // FIXME:
 # include <fcntl.h>
 
 # define X_EVENT_KEY_PRESS		2

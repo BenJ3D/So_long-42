@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/04/14 23:04:45 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/18 15:02:48 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,10 +67,10 @@ MLX =  -L./libs/mlx/ -lmlx -framework OpenGL -framework AppKit -lz
 
 all: $(NAME) 
 
-$(NAME): main.c $(LIBFT) $(OBJ) 
+$(NAME): main.c $(LIBFT) $(OBJ) ./libs/libft/*.c
 	@make -C./libs/libft/
 	@make -C./libs/gnl/
-	@make -C./libs/mlx/
+	@make -C./libs/mlx/  
 	@cp ./libs/mlx/libmlx.dylib ./libmlx.dylib
 	@echo "\033[34mCreation of $(NAME) ...\033[0m"
 	@$(CC) $(MAIN) $(LDFLAGS) $(LFT) $(GNLFLAGS) $(GNLFT) $(OBJ) -o $@ $(MLX)
