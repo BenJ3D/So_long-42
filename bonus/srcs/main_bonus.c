@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 12:01:39 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/19 16:31:14 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/19 18:05:26 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 			game.img_height, "so_long");
 	game.img = mlx_new_image(game.mlx, game.img_width, game.img_height);
 	push_tile_to_win(&game);
-	put_counter_in_windows(&game);
+	put_counter_in_windows(&game, ft_itoa(game.player.countmove));
 	mlx_hook(game.windows, X_EVENT_KEY_PRESS, 0, key_hook, &game);
 	mlx_hook(game.windows, X_EVENT_KEY_EXIT, 0, exit_normal, &game);
 	mlx_loop (game.mlx);

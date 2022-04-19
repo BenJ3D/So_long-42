@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/04/19 15:26:24 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/19 19:44:51 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -141,10 +141,14 @@ fclean: clean
 re: fclean all
 
 norme:
-	norminette $(SRC)
-	norminette ./includes/*.h
-	norminette $(GNL_PATH)*.c 
-	norminette $(LIBFT_PATH)*.c
+	@norminette $(SRC)
+	@norminette ./bonus/srcs/*.c
+	@norminette ./bonus/includes/*.h
+	@norminette ./includes/*.h
+	@norminette ./libs/gnl/*.c 
+	@norminette ./libs/gnl/*.h 
+	@norminette ./libs/libft/*.c
+	@norminette ./libs/libft/*.h 
 
 
 git:

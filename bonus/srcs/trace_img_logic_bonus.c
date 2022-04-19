@@ -6,15 +6,16 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/19 16:29:37 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/19 19:27:42 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
-void	put_counter_in_windows(t_data *game)
+
+void	put_counter_in_windows(t_data *game, char *str)
 {
 	mlx_string_put(game->mlx, game->windows, game->sizetile / 3, \
-		game->sizetile / 2, 0xffff0000, ft_itoa(game->player.countmove));
+		game->sizetile / 2, 0xffff0000, str);
 }
 
 int	trace_player_to_win(t_data *game, int posx, int posy, int i)
@@ -49,6 +50,9 @@ int	pttw_norm(t_data *game, int posx, int posy, int index)
 			game->door.img, sizepng * posx, sizepng * posy);
 	else if (game->map.tile[index] == PLAYER)
 		trace_player_to_win(game, posx, posy, index);
+	else if (game->map.tile[index] == ENEMY)
+		mlx_put_image_to_window(game->mlx, game->windows,
+			game->enemy.png.img, sizepng * posx, sizepng * posy);
 	return (0);
 }
 

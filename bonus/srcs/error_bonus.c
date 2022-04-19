@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/18 18:07:35 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/19 17:04:59 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	write_error_map(t_data *game)
 	if (game->error == ERROR_MAP_CHAR_NO_VALID)
 		ft_putstr("Error\nUnknown character detected,\
  are allowed:\n1 : Wall\n0 : Empty location\nC : Collectible\nE\
- : Exit\nP : Position player.");
+ : Exit\nP : Position player.\nK : Enemy (Optional)");
 	else if (game->error == ERROR_MAP_NO_RECT)
 		ft_putstr("Error\nMap is not rectangular\n");
 	else if (game->error == ERROR_MAP_NO_PLAYER)
@@ -43,7 +43,7 @@ int	write_error_type(t_data *game)
 		ft_putstr("Error\nThe map file does not exist or is corrupted.\n");
 	else if (game->error == ERROR_MISSING_FILE)
 		ft_putstr("Error\nPlease check that all required png files are present in \
-./srcs/png :\ndoor.png\nground.png\nitem.png\nplayer.png\nwall.png\n");
+./srcs/png :\ndoor.png\nground.png\nitem.png\nplayer.png\nwall.png\nenemy.png");
 	else
 		write_error_map(game);
 	if (game->error == ERROR_WARNING_PLAYER)

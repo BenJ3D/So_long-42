@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 15:02:40 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/19 16:14:12 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/19 19:26:24 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	player_move_counter(t_data *game)
 	game->player.countmove++;
 	ft_putnbr(game->player.countmove);
 	ft_putchar('\n');
-	put_counter_in_windows(game);
+	put_counter_in_windows(game, ft_itoa(game->player.countmove));
 }
 
 int	collision_management(t_data *game, int target)
@@ -25,7 +25,8 @@ int	collision_management(t_data *game, int target)
 	int	nb_item;
 
 	nb_item = ft_str_search_char(game->map.tile, ITEM);
-	if (game->map.tile[target] != WALL && game->map.tile[target] != DOOR)
+	if (game->map.tile[target] != WALL && game->map.tile[target] != DOOR \
+		&& game->map.tile[target] != ENEMY)
 	{
 		game->map.tile[game->player.posi] = GROUND;
 		game->map.tile[target] = PLAYER;
@@ -39,6 +40,11 @@ int	collision_management(t_data *game, int target)
 			player_move_counter(game);
 			exit_normal(game);
 		}
+	}
+	else if (game->map.tile[target] == ENEMY)
+	{
+		player_move_counter(game);
+		exit_gameover(game);
 	}
 	return (0);
 }

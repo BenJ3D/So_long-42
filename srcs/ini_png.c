@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 13:49:23 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 22:54:54 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/19 17:25:59 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	check_if_file_exist(t_data *game)
 	fd = open(game->item.path, O_RDONLY);
 	if (fd < 0)
 		game->error = ERROR_MISSING_FILE;
+	close (fd);
 	if (game->error != NO_ERROR)
 		write_error_type(game);
 }

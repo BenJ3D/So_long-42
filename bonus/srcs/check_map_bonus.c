@@ -6,12 +6,19 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/18 18:07:25 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/19 19:26:44 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
+/**
+ * @brief for multi P detected
+ * 
+ * @param game 
+ * @param counter 
+ * @return int 
+ */
 int	save_only_first_position(t_data *game, int counter)
 {
 	int	lenmap;
@@ -90,12 +97,11 @@ int	check_wall_close_map(t_data *game, int i)
 	return (0);
 }
 
-int	check_chars_is_valid(t_data *game)
+void	check_chars_is_valid2(t_data *game)
 {
 	int	i;
 
 	i = 0;
-	game->error = NO_ERROR;
 	while (game->map.tile[i])
 	{
 		if (WALL == game->map.tile[i])
@@ -108,12 +114,20 @@ int	check_chars_is_valid(t_data *game)
 			i++;
 		else if (DOOR == game->map.tile[i])
 			i++;
+		else if (ENEMY == game->map.tile[i])
+			i++;
 		else
 		{
 			game->error = ERROR_MAP_CHAR_NO_VALID;
 			break ;
 		}
 	}
+}
+
+int	check_chars_is_valid(t_data *game)
+{
+	game->error = NO_ERROR;
+	check_chars_is_valid2(game);
 	if (game->error != NO_ERROR)
 		write_error_type(game);
 	return (0);

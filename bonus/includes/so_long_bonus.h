@@ -6,18 +6,17 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/19 16:13:52 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/19 19:28:53 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../../libs/mlx/mlx.h"
 # include "../../libs/libft/libft.h"
 # include "../../libs/gnl/get_next_line.h"
 # include <math.h>
-# include <stdio.h> // FIXME:
 # include <fcntl.h>
 
 # define X_EVENT_KEY_PRESS		2
@@ -47,7 +46,8 @@ enum	e_type_obj
 	GROUND='0',
 	ITEM='C',
 	DOOR='E',
-	PLAYER='P'
+	PLAYER='P',
+	ENEMY='K'
 };
 
 enum	e_key
@@ -108,6 +108,7 @@ typedef struct s_data
 	char			*line;
 	int				endian;
 	t_player		player;
+	t_player		enemy;
 	int				sizetile;
 	t_png			item;
 	t_png			door;
@@ -160,7 +161,7 @@ void	patch_mlx(t_data *game);
 
 /******------------------ bonus ------------------******/
 
-void	put_counter_in_windows(t_data *game);
-
+void	put_counter_in_windows(t_data *game, char *str);
+int		exit_gameover(t_data *game);
 
 #endif
