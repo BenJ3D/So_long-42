@@ -6,11 +6,16 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/18 18:08:07 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/19 16:29:37 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
+void	put_counter_in_windows(t_data *game)
+{
+	mlx_string_put(game->mlx, game->windows, game->sizetile / 3, \
+		game->sizetile / 2, 0xffff0000, ft_itoa(game->player.countmove));
+}
 
 int	trace_player_to_win(t_data *game, int posx, int posy, int i)
 {

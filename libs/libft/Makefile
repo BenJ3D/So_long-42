@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 09:53:02 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/18 17:11:10 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/19 15:29:57 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ all: $(NAME)
 %.o: %.c $(SRCS) $(HEADER)
 	$(CC) $(CFLAGS) -c -o $@ $< 
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) ./Makefile
 	$(AR) $@ $^
 
 

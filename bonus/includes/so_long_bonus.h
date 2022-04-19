@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:51:25 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/18 18:09:01 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/19 16:13:52 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,5 +157,10 @@ int		key_hook(int keycode, t_data *game);
 /******------------------ mlx path ------------------******/
 
 void	patch_mlx(t_data *game);
+
+/******------------------ bonus ------------------******/
+
+void	put_counter_in_windows(t_data *game);
+
 
 #endif

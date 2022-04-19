@@ -17,7 +17,7 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_SRCS)))
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) ./Makefile
 	$(AR) $@ $^
 	
 %.o: %.c $(SRCS) $(HEADER)
