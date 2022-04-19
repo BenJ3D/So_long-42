@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/04/19 19:44:51 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/19 20:31:44 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ CC = gcc $(CFLAGS)
 
 CFLAGS = -Wall -Wextra -Werror 
 
-FS =# -fsanitize=address -g3
+FS = #-fsanitize=address -g3
 
 MLX = -L./libs/mlx/ -lmlx -framework OpenGL -framework AppKit -lz 
 
@@ -135,7 +135,8 @@ cleanbonus:
 fclean: clean
 	@make fclean -C ./libs/libft/
 	@echo "\033[33mRemoval of $(NAME)...\033[0m"
-	@-rm -f $(NAME) $(NAME_BONUS) ./libmlx.dylib ./bonus/libmlx.dylib
+	@-rm -f $(NAME) $(NAME_BONUS) ./libmlx.dylib ./bonus/libmlx.dylib .vsvcode
+	@rm -d -rf .vsvcode
 	@echo "\033[31mBinary $(NAME) deleted\n\033[0m"
 
 re: fclean all

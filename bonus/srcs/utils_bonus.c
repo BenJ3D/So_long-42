@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:47:13 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/19 19:28:09 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:21:40 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	exit_gameover(t_data *game)
 	center_y = ((game->map.leny * game->sizetile) / 2);
 	ft_putstr("GAME OVER");
 	mlx_string_put(game->mlx, game->windows, center_x - 100, center_y, \
-0xffff0000, "GAME OVER");
+	0xffff0000, "GAME OVER");
 	mlx_do_sync(game->mlx);
 	usleep(750000);
 	exit_normal(game);
