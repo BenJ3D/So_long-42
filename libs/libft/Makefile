@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 09:53:02 by bducrocq          #+#    #+#              #
-#    Updated: 2022/04/19 15:29:57 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/20 13:12:11 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 
 all: $(NAME)
 
-%.o: %.c $(SRCS) $(HEADER)
+%.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c -o $@ $< 
 
 $(NAME): $(OBJS) ./Makefile

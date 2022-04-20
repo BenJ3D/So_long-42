@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/04/19 20:31:44 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/20 13:16:36 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,9 @@ OBJ_PATH_BONUS = ./bonus/objs/
 
 WFLAGS = -I./includes/
 WFLAGSBONUS = -I./bonus/includes/
+
+HEADER = ./includes/so_long.h
+HEADER_BONUS = ./bonus/includes/so_long.h
 
 LIBFT_PATH	= ./libs/libft/libft.a
 
@@ -77,23 +80,18 @@ CFLAGS = -Wall -Wextra -Werror
 
 FS = #-fsanitize=address -g3
 
-MLX = -L./libs/mlx/ -lmlx -framework OpenGL -framework AppKit -lz 
-
-# Var
-
-VBONUS = FALSE
-VALL = FALSE
+MLX = -L./libs/mlx -lmlx -framework OpenGL -framework AppKit -lz 
 
 # Rules
 
 all: gnl lib mlx $(NAME) 
 
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(OBJ) $(LIBFT_PATH) $(GNL_PATH) $(HEADER) ./Makefile
 	@echo "\033[34mCreation of $(NAME) ...\033[0m"
 	@$(CC) $(FS) $(LIBFT_PATH) $(GNL_PATH) $(OBJ) -o $@ $(MLX)
 	@echo "\033[32m$(NAME) created\n\033[0m"
 
-$(NAME_BONUS): $(LIBFT) $(OBJ_BONUS)
+$(NAME_BONUS): $(OBJ_BONUS) $(LIBFT_PATH) $(GNL_PATH) ./Makefile
 	@echo "\033[34mCreation of $(NAME) ...\033[0m"
 	@$(CC) $(FS) $(LIBFT_PATH) $(GNL_PATH) $(OBJ_BONUS) -o $(NAME_BONUS) $(MLX)
 	@cp ./libs/mlx/libmlx.dylib ./bonus/libmlx.dylib
@@ -107,17 +105,17 @@ $(OBJ_PATH_BONUS)%.o: $(SRC_PATH_BONUS)%.c
 	@mkdir $(OBJ_PATH_BONUS) 2> /dev/null || true
 	@$(CC) $(WFLAGSBONUS) -o $@ -c $<
 
-lib: ./libs/libft/Makefile
+lib:
 	@make -C./libs/libft/
 
-gnl: ./libs/gnl/Makefile
+gnl:
 	@make -C ./libs/gnl
 
-mlx: ./libs/mlx/Makefile
+mlx:
 	@make -C./libs/mlx/
 	@cp ./libs/mlx/libmlx.dylib ./libmlx.dylib
 
-bonus: gnl lib mlx $(NAME_BONUS)  
+bonus: gnl lib mlx $(NAME_BONUS)
 
 clean: cleanbonus
 	@make clean -C ./libs/libft/
@@ -134,15 +132,16 @@ cleanbonus:
 
 fclean: clean
 	@make fclean -C ./libs/libft/
+	@make fclean -C ./libs/gnl/
 	@echo "\033[33mRemoval of $(NAME)...\033[0m"
 	@-rm -f $(NAME) $(NAME_BONUS) ./libmlx.dylib ./bonus/libmlx.dylib .vsvcode
-	@rm -d -rf .vsvcode
+	@-rm -d -rf .vsvcode
 	@echo "\033[31mBinary $(NAME) deleted\n\033[0m"
 
 re: fclean all
 
 norme:
-	@norminette $(SRC)
+	@norminette ./srcs/
 	@norminette ./bonus/srcs/*.c
 	@norminette ./bonus/includes/*.h
 	@norminette ./includes/*.h
@@ -150,7 +149,6 @@ norme:
 	@norminette ./libs/gnl/*.h 
 	@norminette ./libs/libft/*.c
 	@norminette ./libs/libft/*.h 
-
 
 git:
 	git add .

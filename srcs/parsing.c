@@ -6,7 +6,7 @@
 /*   By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:48:31 by bducrocq          #+#    #+#             */
-/*   Updated: 2022/04/13 18:56:25 by bducrocq         ###   ########.fr       */
+/*   Updated: 2022/04/20 13:53:32 by bducrocq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	parsing_map(t_data	*game, char *pathfile)
 	game->map.bool = 0;
 	fd = ft_open_file(pathfile, game);
 	game->map.tile = ft_strdup("");
+	if (!game->map.tile)
+		return (0);
 	game->map.leny = 1;
 	while (1)
 	{
