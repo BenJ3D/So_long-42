@@ -6,7 +6,7 @@
 #    By: bducrocq <bducrocq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/29 16:05:24 by cfatrane          #+#    #+#              #
-#    Updated: 2022/04/20 13:16:36 by bducrocq         ###   ########.fr        #
+#    Updated: 2022/04/20 16:36:30 by bducrocq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ FS = #-fsanitize=address -g3
 
 MLX = -L./libs/mlx -lmlx -framework OpenGL -framework AppKit -lz 
 
-# Rules
+# Rules 
 
 all: gnl lib mlx $(NAME) 
 
