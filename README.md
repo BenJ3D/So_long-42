@@ -52,12 +52,9 @@ Now launch the game with command : ``./so_long maps/01.ber`` (change the path fo
 
 Place yourself in the bonus directory and start the game with 
 
-![solong01.png](https://lh3.googleusercontent.com/DuK3wlG7QfXTWSGWMGdatxebbEt4cCXmJPYth2TcM95uB0xZMrQM4D04_AJV9D27FIWiwRG6gi-3P5LKYdAd=w3590-h2176-rw)
-
 ### Contact
 ---
 
 * 42 Login:	*bducrocq*
 * Email:		*benjamin@ben3d.fr*
 
-Good luck with your projects!
